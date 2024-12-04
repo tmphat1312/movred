@@ -1,0 +1,11 @@
+{
+  "Create page component": {
+    "prefix": "/page",
+    "body": [
+      "export default function ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}() {",
+      "  return <div>${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}</div>;",
+      "}"
+    ],
+    "description": "Create page component"
+  }
+}
