@@ -1,11 +1,29 @@
 {
-  "Create page component": {
+  "Create a page component": {
     "prefix": "/page",
     "body": [
       "export default function ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}() {",
       "  return <div>${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}</div>;",
       "}"
     ],
-    "description": "Create page component"
+    "description": "Create a page component"
+  },
+  "Create a layout component": {
+    "prefix": "/layout",
+    "body": [
+      "export default function ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}({children}:{children:React.ReactNode}) {",
+      "  return <div>${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}</div>;",
+      "}"
+    ],
+    "description": "Create a layout component"
+  },
+  "Create a component": {
+    "prefix": "/comp",
+    "body": [
+      "export function ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}() {",
+      "  return <div>${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}</div>;",
+      "}"
+    ],
+    "description": "Create a component"
   }
 }
