@@ -13,10 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <ClerkProvider>
+        <body className="min-h-dvh container">{children}</body>
+      </ClerkProvider>
+    </html>
   );
 }

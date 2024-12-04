@@ -13,6 +13,13 @@ export default {
         foreground: "var(--foreground)",
       },
     },
+    container: {
+      center: true,
+      padding: "1rem",
+      screens: {
+        sm: "640px",
+      },
+    },
   },
   plugins: [],
 } satisfies Config;
