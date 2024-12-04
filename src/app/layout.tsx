@@ -12,15 +12,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="shortcut icon"
-          href="https://fav.farm/🎞️"
-          type="image/x-icon"
-        />
-      </head>
-    </html>
         <body>{children}</body>
   );
 }
