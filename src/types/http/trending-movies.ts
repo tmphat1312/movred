@@ -1,11 +1,12 @@
-import { array, Infer, object } from "superstruct";
+import { array, Infer, object, union } from "superstruct";
+import { SHomeMovie } from "./home-movies";
 
-export const STrendingMovie = object({});
+export const STrendingMovie = union([SHomeMovie]);
 
 export const STrendingMoviesHttpResponse = object({
-  results: array(STrendingMovie),
+	results: array(STrendingMovie),
 });
 
 export type TTrendingMoviesHttpResponse = Infer<
-  typeof STrendingMoviesHttpResponse
+	typeof STrendingMoviesHttpResponse
 >;
