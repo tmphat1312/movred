@@ -4,9 +4,9 @@ import { SHomeMovie } from "./home-movies";
 export const STrendingMovie = union([SHomeMovie]);
 
 export const STrendingMoviesHttpResponse = object({
-	results: array(STrendingMovie),
+  results: array(STrendingMovie),
 });
 
 export type TTrendingMoviesHttpResponse = Infer<
-	typeof STrendingMoviesHttpResponse
+  typeof STrendingMoviesHttpResponse
 >;
