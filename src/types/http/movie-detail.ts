@@ -19,14 +19,14 @@ export const SMovieDetail = object({
       name: string(),
       poster_path: nullable(string()),
       backdrop_path: nullable(string()),
-    })
+    }),
   ),
   budget: integer(),
   genres: array(
     object({
       id: integer(),
       name: string(),
-    })
+    }),
   ),
   homepage: optional(string()),
   id: integer(),
@@ -43,13 +43,13 @@ export const SMovieDetail = object({
       logo_path: nullable(string()),
       name: string(),
       origin_country: string(),
-    })
+    }),
   ),
   production_countries: array(
     object({
       iso_3166_1: string(),
       name: string(),
-    })
+    }),
   ),
   release_date: string(),
   revenue: integer(),
@@ -59,7 +59,7 @@ export const SMovieDetail = object({
       english_name: string(),
       iso_639_1: string(),
       name: string(),
-    })
+    }),
   ),
   status: string(),
   tagline: optional(string()),

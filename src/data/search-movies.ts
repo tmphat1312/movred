@@ -7,7 +7,7 @@ type Options = {
 
 export async function searchMovies({ title, page }: Options) {
   const response = await authenticatedApiClient.get(
-    `/search/movie?query=${title}&page=${page}`
+    `/search/movie?query=${title}&page=${page}`,
   );
 
   return response.data;

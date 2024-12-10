@@ -3,7 +3,7 @@ import { SMoviesHttpResponse } from "@/types/http/home-movies";
 
 export async function getMovies() {
   const response = await authenticatedApiClient.get(
-    "/trending/movie/day?language=en-US"
+    "/trending/movie/day?language=en-US",
   );
 
   const typedResponse = SMoviesHttpResponse.mask(response.data);
