@@ -1,12 +1,12 @@
 import { authenticatedApiClient } from "@/lib/apiClient";
-import { SMoviesHttpResponse } from "@/types/http/movies";
+import { SMoviesHttpResponse } from "@/types/http/home-movies";
 
 export async function getMovies() {
-  const response = await authenticatedApiClient.get(
-    "/trending/movie/day?language=en-US"
-  );
+	const response = await authenticatedApiClient.get(
+		"/trending/movie/day?language=en-US"
+	);
 
-  const typedResponse = SMoviesHttpResponse.mask(response.data);
+	const typedResponse = SMoviesHttpResponse.mask(response.data);
 
-  return typedResponse;
+	return typedResponse;
 }
