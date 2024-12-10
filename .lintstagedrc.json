@@ -1,0 +1,7 @@
+{
+  "*.{mjs,js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write --list-different"
+  ],
+  "*.{md,json}": ["prettier --write --list-different"]
+}
