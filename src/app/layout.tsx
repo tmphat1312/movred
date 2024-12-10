@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ClerkProvider>
-        <body className="min-h-dvh container">{children}</body>
+        <body className="container min-h-dvh">{children}</body>
       </ClerkProvider>
     </html>
   );

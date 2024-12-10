@@ -6,10 +6,10 @@ export default async function Home() {
   const movies = await getMovies();
 
   return (
-    <div className="py-12 space-y-4">
+    <div className="space-y-4 py-12">
       <HomeHeader />
       <main>
-        <h1 className="text-2xl text-bold mb-4">Home</h1>
+        <h1 className="text-bold mb-4 text-2xl">Home</h1>
         <AuthenticationStatus />
         <div>{movies.results.length}</div>
       </main>

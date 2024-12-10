@@ -13,7 +13,7 @@ export function UserDetails() {
   return (
     <div className="space-y-8">
       <section>
-        <h2 className="text-xl font-medium mb-3">User Details</h2>
+        <h2 className="mb-3 text-xl font-medium">User Details</h2>
         <div>
           <span>Username: </span>
           <span>{user.username}</span>
@@ -28,7 +28,7 @@ export function UserDetails() {
         </div>
       </section>
       <section>
-        <h2 className="text-xl font-medium mb-3">Session Details</h2>
+        <h2 className="mb-3 text-xl font-medium">Session Details</h2>
         <div>
           <span>Status: </span>
           <span>{session.status}</span>
