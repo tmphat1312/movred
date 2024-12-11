@@ -1,21 +1,19 @@
-import { AuthenticationStatus } from "@/components/authentication-status";
-import { HomeHeader } from "@/components/layouts/home-header";
-import { getMovies } from "@/data/get-movies";
+import { Footer } from "@/components/layouts/footer";
+import { StickyHeader } from "@/components/layouts/sticky-header";
+import { SearchHero } from "@/features/home/components/search-hero";
+import { TrendingMovies } from "@/features/home/components/trending-movies";
 
 export default async function Home() {
-  const movies = await getMovies();
-
   return (
-    <div className="space-y-4 py-12">
-      <HomeHeader />
+    <>
+      <StickyHeader />
       <main>
-        <h1 className="text-bold mb-4 text-2xl">Home</h1>
-        <AuthenticationStatus />
-        <div>{movies.results.length}</div>
+        <h1 className="text-bold sr-only mb-4 text-2xl">Home</h1>
+        <SearchHero />
+        <TrendingMovies />
+        <div className="h-[800px]"></div>
       </main>
-      <footer>
-        <p>Hello world from Minh Phat</p>
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 }

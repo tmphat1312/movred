@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "layout-bg": "var(--layout-background)",
+        "layout-fg": "var(--layout-foreground)",
       },
     },
     container: {
