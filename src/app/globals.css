@@ -36,4 +36,15 @@ body {
     );
     color: var(--gradient-green-foreground);
   }
+
+  .text-green-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--gradient-green-from) 60%,
+      var(--gradient-green-to) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
