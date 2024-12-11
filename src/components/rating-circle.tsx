@@ -11,8 +11,8 @@ export function RatingCircle({
   return (
     <div
       className={cn(
-        className,
         "relative inline-block size-16 text-2xl font-medium text-layout-fg",
+        className,
       )}
     >
       <svg className="h-full w-full" viewBox="0 0 100 100">
