@@ -1,4 +1,4 @@
-import { authenticatedApiClient } from "@/lib/apiClient";
+import { apiClient } from "@/lib/apiClient";
 
 type Options = {
   title: string;
@@ -6,7 +6,7 @@ type Options = {
 };
 
 export async function searchMovies({ title, page }: Options) {
-  const response = await authenticatedApiClient.get(
+  const response = await apiClient.get(
     `/search/movie?query=${title}&page=${page}`,
   );
 
