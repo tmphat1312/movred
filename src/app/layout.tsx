@@ -20,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ClerkProvider>
-        <body className={`min-h-dvh ${source_sans_font.className}`}>
+        <body
+          className={`custom-scrollbar min-h-dvh ${source_sans_font.className}`}
+        >
           <StickyHeader />
           {children}
           <Footer />

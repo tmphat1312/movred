@@ -26,7 +26,7 @@ export function SearchMovieForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    router.push(`/search?query=${searchQuery}`);
+    router.push(`/search?query=${searchQuery}`, { scroll: false });
   }
 
   return (

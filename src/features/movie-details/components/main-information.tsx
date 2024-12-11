@@ -1,11 +1,12 @@
 import { RatingCircle } from "@/components/rating-circle";
+import { TempLoadingIndicator } from "@/components/temp-loading-indicator";
 import { getMovieDetail } from "@/data/get-movie-detail";
 import Image from "next/image";
 import { Suspense } from "react";
 
 export function MainInformation({ movieId }: { movieId: number }) {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<TempLoadingIndicator />}>
       <MainInformationWithoutSuspense movieId={movieId} />
     </Suspense>
   );

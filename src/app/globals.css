@@ -29,6 +29,44 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@layer base {
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 1rem;
+  }
+
+  .custom-scrollbar {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+}
+
 @layer utilities {
   .green-gradient {
     background: linear-gradient(

@@ -1,3 +1,5 @@
+import { TempLoadingIndicator } from "@/components/temp-loading-indicator";
+
 export default function HomeLoading() {
-  return <div>Loading...</div>;
+  return <TempLoadingIndicator />;
 }
