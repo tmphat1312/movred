@@ -12,7 +12,7 @@
     "prefix": "/layout",
     "body": [
       "export default function ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}({children}:{children:React.ReactNode}) {",
-      "  return <div>${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/pascalcase}/}</div>;",
+      "  return <div>{children}</div>;",
       "}",
     ],
     "description": "Create a layout component",

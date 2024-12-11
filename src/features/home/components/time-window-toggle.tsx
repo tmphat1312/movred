@@ -29,8 +29,8 @@ function TimeWindowToggleWithoutSuspense() {
         <button
           key={value}
           className={cn(
-            "px-5 py-1 transition-colors",
-            currentTimeWindow == value && "text-green-gradient",
+            "rounded-full px-5 py-1 transition-colors",
+            currentTimeWindow == value && "text-green-gradient outline-red-500",
           )}
           onClick={() => changeTimeWindow(value)}
         >

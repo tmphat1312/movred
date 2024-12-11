@@ -27,7 +27,7 @@ export function MoviesSlider({
   );
 
   return (
-    <ul className="scroll-snap flex snap-mandatory space-x-4 overflow-x-scroll whitespace-nowrap pb-6">
+    <ul className="scroll-snap custom-scrollbar flex snap-mandatory space-x-4 overflow-x-scroll whitespace-nowrap pb-6">
       {movies.map((movie) => (
         <li key={movie.id}>
           <MovieCard {...movie} />

@@ -12,7 +12,6 @@ export function StickyHeader() {
         </div>
         <div className="flex items-center gap-4">
           <AuthenticationNavigation />
-          <div>search icon</div>
         </div>
       </header>
     </div>
