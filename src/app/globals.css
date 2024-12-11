@@ -5,17 +5,102 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --layout-background: #03213a;
+  --layout-foreground: #ffffff;
+
+  --gradient-green-from: #89cda4;
+  --gradient-green-to: #13b6dc;
+  --gradient-green-foreground: #ffffff;
+
+  --link-hover: #13b6dc;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 1rem;
+  }
+
+  .custom-scrollbar {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: #6baf8d;
+    --sb-size: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+}
+
+@layer utilities {
+  .green-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--gradient-green-from) 0%,
+      var(--gradient-green-to) 100%
+    );
+    color: var(--gradient-green-foreground);
+  }
+
+  .text-green-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--gradient-green-from) 60%,
+      var(--gradient-green-to) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .light-blue-gradient {
+    background: linear-gradient(90deg, #13b6dc 0%, #649ca9 100%);
+    color: #ffffff;
+  }
+
+  .black-gradient {
+    /* background: linear-gradient(90deg, #000000 0%, #434343 100%);
+    color: #ffffff; */
+    background-image: linear-gradient(
+      to right,
+      rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
+      rgba(31.5, 31.5, 31.5, 0.84) 50%,
+      rgba(31.5, 31.5, 31.5, 0.84) 100%
+    );
+  }
 }
