@@ -20,7 +20,7 @@ function TimeWindowToggleWithoutSuspense() {
     <div className="relative overflow-clip rounded-full border border-layout-bg bg-transparent font-medium leading-5">
       <div
         className={cn(
-          "absolute top-0 -z-10 h-full w-[82px] rounded-full bg-layout-bg transition-[left_width] duration-500 ease-linear",
+          "duration-400 absolute top-0 -z-10 h-full w-[82px] rounded-full bg-layout-bg transition-[left_width] ease-linear",
           currentTimeWindow == "day" && "left-0 w-[82px]",
           currentTimeWindow == "week" && "left-[82px] w-[108px]",
         )}
