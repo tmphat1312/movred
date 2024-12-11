@@ -2,8 +2,17 @@
 
 import { useTimeWindow } from "@/features/home/hooks/use-time-window";
 import { cn } from "@/lib/utils/cn";
+import { Suspense } from "react";
 
 export function TimeWindowToggle() {
+  return (
+    <Suspense fallback={<div>loading...</div>}>
+      <TimeWindowToggleWithoutSuspense />
+    </Suspense>
+  );
+}
+
+function TimeWindowToggleWithoutSuspense() {
   const { changeTimeWindow, currentTimeWindow, possibleTimeWindows } =
     useTimeWindow();
 
