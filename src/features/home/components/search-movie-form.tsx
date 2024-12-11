@@ -33,8 +33,13 @@ export function SearchMovieForm() {
     <form
       className="flex items-center gap-2 rounded-full bg-background ps-2 text-foreground shadow-md outline-offset-2 has-[input:focus]:outline"
       onSubmit={handleSubmit}
+      aria-label="Search for a movie with a keyword or two"
     >
+      <label htmlFor="search-query" className="sr-only">
+        Search query
+      </label>
       <input
+        id="search-query"
         ref={inputRef}
         className="grow bg-transparent px-4 py-2.5 focus:outline-none"
         placeholder="Search for a movie with a keyword or two :)..."
