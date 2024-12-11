@@ -35,4 +35,13 @@
     ],
     "description": "Create a util function",
   },
+  "Create a custom hook function": {
+    "prefix": "/hook",
+    "body": [
+      "export function ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}() {",
+      "  $1",
+      "}",
+    ],
+    "description": "Create a custom hook function",
+  },
 }
