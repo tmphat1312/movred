@@ -7,12 +7,23 @@ export function RatingCircle({
   className?: string;
   rating: number;
 }) {
-  const percentage = (rating * 10).toFixed(0);
+  const percentage = Number((rating * 10).toFixed(0));
+
+  let circleColor = "";
+
+  if (percentage >= 70) {
+    circleColor = "text-green-500";
+  } else if (percentage >= 40) {
+    circleColor = "text-yellow-500";
+  } else {
+    circleColor = "text-red-500";
+  }
+
   return (
     <div
       className={cn(
-        className,
         "relative inline-block size-16 text-2xl font-medium text-layout-fg",
+        className,
       )}
     >
       <svg className="h-full w-full" viewBox="0 0 100 100">
@@ -32,7 +43,7 @@ export function RatingCircle({
           fill="transparent"
         />
         <circle
-          className="progress-ring__circle stroke-current text-green-500"
+          className={`${circleColor} stroke-current`}
           strokeWidth={8}
           strokeLinecap="round"
           cx={50}
@@ -50,7 +61,7 @@ export function RatingCircle({
           fill="currentColor"
           fontWeight="bold"
         >
-          {percentage}&#65130;
+          {percentage > 0 ? <>{percentage}&#65130;</> : "NR"}
         </text>
       </svg>
     </div>
