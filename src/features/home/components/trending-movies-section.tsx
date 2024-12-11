@@ -1,6 +1,5 @@
-import { Suspense } from "react";
-import { MoviesSlider } from "./movies-slider";
 import { TimeWindowToggle } from "./time-window-toggle";
+import { TrendingMovies } from "./trending-movies";
 
 export function TrendingMoviesSection() {
   return (
@@ -9,11 +8,9 @@ export function TrendingMoviesSection() {
         <h3 className="text-2xl font-semibold" aria-label="Trending movies">
           Trending
         </h3>
-        <Suspense fallback={<div>loading...</div>}>
-          <TimeWindowToggle />
-        </Suspense>
+        <TimeWindowToggle />
       </div>
-      <MoviesSlider />
+      <TrendingMovies />
     </section>
   );
 }
