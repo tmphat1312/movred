@@ -50,7 +50,7 @@ export function RatingCircle({
           fill="currentColor"
           fontWeight="bold"
         >
-          {percentage}&#65130;
+          {parseInt(percentage) > 0 ? <>{percentage}&#65130;</> : "NR"}
         </text>
       </svg>
     </div>
