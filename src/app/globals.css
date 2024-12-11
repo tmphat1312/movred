@@ -49,4 +49,20 @@ body {
     background-clip: text;
     color: transparent;
   }
+
+  .light-blue-gradient {
+    background: linear-gradient(90deg, #13b6dc 0%, #649ca9 100%);
+    color: #ffffff;
+  }
+
+  .black-gradient {
+    /* background: linear-gradient(90deg, #000000 0%, #434343 100%);
+    color: #ffffff; */
+    background-image: linear-gradient(
+      to right,
+      rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
+      rgba(31.5, 31.5, 31.5, 0.84) 50%,
+      rgba(31.5, 31.5, 31.5, 0.84) 100%
+    );
+  }
 }

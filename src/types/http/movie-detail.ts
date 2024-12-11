@@ -69,9 +69,7 @@ export const SMovieDetail = object({
   vote_count: integer(),
 });
 
-export const SMovieDetailsHttpResponse = object({
-  results: array(SMovieDetail),
-});
+export const SMovieDetailsHttpResponse = SMovieDetail;
 
 export type TTrendingMoviesHttpResponse = Infer<
   typeof SMovieDetailsHttpResponse
