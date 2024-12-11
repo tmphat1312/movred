@@ -8,17 +8,32 @@
 
   --layout-background: #03213a;
   --layout-foreground: #ffffff;
+
+  --gradient-green-from: #89cda4;
+  --gradient-green-to: #13b6dc;
+  --gradient-green-foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .green-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--gradient-green-from) 0%,
+      var(--gradient-green-to) 100%
+    );
+    color: var(--gradient-green-foreground);
+  }
 }
