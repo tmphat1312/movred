@@ -1,4 +1,4 @@
-export function SearchHero() {
+export function SearchHeroSection() {
   return (
     <div className="bg-[#00a6e6] text-layout-fg">
       <section className="container space-y-8 py-16">
