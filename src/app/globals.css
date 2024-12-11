@@ -12,6 +12,8 @@
   --gradient-green-from: #89cda4;
   --gradient-green-to: #13b6dc;
   --gradient-green-foreground: #ffffff;
+
+  --link-hover: #13b6dc;
 }
 
 /* @media (prefers-color-scheme: dark) {

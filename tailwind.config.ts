@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         "layout-bg": "var(--layout-background)",
         "layout-fg": "var(--layout-foreground)",
+        "link-hover": "var(--link-hover)",
       },
     },
     container: {

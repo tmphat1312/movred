@@ -7,7 +7,10 @@ export function UnderlineLink({
 }: LinkProps & { className?: string; children?: React.ReactNode }) {
   return (
     <Link
-      className={cn("underline-offset-2 hover:underline", className)}
+      className={cn(
+        "underline-offset-2 hover:text-link-hover hover:underline",
+        className,
+      )}
       {...props}
     />
   );
