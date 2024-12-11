@@ -1,4 +1,4 @@
-import { authenticatedApiClient } from "@/lib/apiClient";
+import { apiClient } from "@/lib/apiClient";
 
 type Options = {
   time_window: "day" | "week";
@@ -6,7 +6,7 @@ type Options = {
 };
 
 export async function getTrendingMovies({ time_window, page }: Options) {
-  const response = await authenticatedApiClient.get(
+  const response = await apiClient.get(
     `/trending/movie/${time_window}?page=${page}`,
   );
 
