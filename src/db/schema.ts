@@ -2,7 +2,7 @@ import {
   sqliteTable,
   integer,
   text,
-  real, // Thay cho float
+  real,
   primaryKey,
 } from "drizzle-orm/sqlite-core";
 
@@ -50,6 +50,33 @@ export const movieGenres = sqliteTable(
   }),
 );
 
+// Bảng Popular_Movies
+export const popularMovies = sqliteTable("popular_movies", {
+  id: integer("id").primaryKey(), // Khóa chính
+  movieId: integer("movie_id")
+    .notNull()
+    .references(() => movies.id), // Liên kết đến bảng Movies
+  popularity: real("popularity"), // Độ phổ biến
+});
+
+export const trendingMoviesToday = sqliteTable("trending_movies_today", {
+  id: integer("id").primaryKey(),
+  movieId: integer("movie_id")
+    .notNull()
+    .references(() => movies.id),
+  mediaType: text("media_type"),
+  popularity: real("popularity"),
+});
+
+export const trendingMoviesThisWeek = sqliteTable("trending_movies_this_week", {
+  id: integer("id").primaryKey(),
+  movieId: integer("movie_id")
+    .notNull()
+    .references(() => movies.id),
+  mediaType: text("media_type"),
+  popularity: real("popularity"),
+});
+
 // Table People
 export const people = sqliteTable("people", {
   id: integer("id").primaryKey(),
@@ -76,6 +103,19 @@ export const movieCasts = sqliteTable("movie_casts", {
   personId: integer("person_id").references(() => people.id),
   character: text("character"),
   castOrder: integer("cast_order"),
+});
+
+export const movieCrews = sqliteTable("movie_crews", {
+  id: integer("id").primaryKey(), // Khóa chính
+  movieId: integer("movie_id")
+    .notNull()
+    .references(() => movies.id), // Liên kết đến bảng Movies
+  personId: integer("person_id")
+    .notNull()
+    .references(() => people.id), // Liên kết đến bảng People
+  department: text("department").notNull(), // Bộ phận (e.g., "Directing", "Production")
+  job: text("job").notNull(), // Công việc cụ thể (e.g., "Director", "Producer")
+  creditId: text("credit_id"), // ID của credit (nếu có)
 });
 
 // Table Users

@@ -42,3 +42,9 @@ next-env.d.ts
 
 # CSpell VSCode
 */cspell.json
+
+# tmdb_json data
+/tmdb_json
+
+# import data
+/src/db/import_data.ts
