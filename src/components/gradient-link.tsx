@@ -1,10 +1,9 @@
 import { cn } from "@/lib/utils/cn";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 
-export function GradientLink({
-  className,
-  ...props
-}: LinkProps & { className?: string; children?: React.ReactNode }) {
+type GradientLinkProps = React.ComponentProps<typeof Link>;
+
+export function GradientLink({ className, ...props }: GradientLinkProps) {
   return (
     <Link
       className={cn(
