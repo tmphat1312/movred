@@ -20,10 +20,10 @@ export function FancyLogo() {
           </linearGradient>
           <linearGradient id="__logo-gradient-circle">
             <stop stopColor="#89cda4" />
-            <stop offset="80%" stopColor="#13beac" />
+            <stop offset="80%" stopColor="#13bfac" />
           </linearGradient>
           <linearGradient id="__logo-gradient-circle-reverse">
-            <stop stopColor="#13beac" />
+            <stop stopColor="#13bfac" />
             <stop offset="80%" stopColor="#89cda4" />
           </linearGradient>
         </defs>
