@@ -16,17 +16,9 @@
   --link-hover: #13b6dc;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -42,22 +34,23 @@ body {
 
   .custom-scrollbar {
     --sb-track-color: #ffffff;
-    --sb-thumb-color: #6baf8d;
-    --sb-size: 6px;
+    --sb-thumb-color: #dbdbdb;
+    --sb-size: 8px;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
     width: var(--sb-size);
+    height: var(--sb-size);
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: var(--sb-track-color);
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   @supports not selector(::-webkit-scrollbar) {
@@ -94,8 +87,6 @@ body {
   }
 
   .black-gradient {
-    /* background: linear-gradient(90deg, #000000 0%, #434343 100%);
-    color: #ffffff; */
     background-image: linear-gradient(
       to right,
       rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
