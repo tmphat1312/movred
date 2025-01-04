@@ -31,7 +31,9 @@ body {
     background-size: cover;
     shape-margin: 1rem;
   }
+}
 
+@layer components {
   .custom-scrollbar {
     --sb-track-color: #ffffff;
     --sb-thumb-color: #dbdbdb;
