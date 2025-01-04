@@ -6,6 +6,9 @@ export function MainNavigation() {
       <UnderlineLink className="inline-block p-2" href="/">
         Movies (not yet available)
       </UnderlineLink>
+      <UnderlineLink className="inline-block p-2" href="/">
+        People (not yet available)
+      </UnderlineLink>
     </nav>
   );
 }
