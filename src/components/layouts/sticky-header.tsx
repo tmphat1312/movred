@@ -1,4 +1,4 @@
-import { Logo } from "../Logo";
+import { Logo } from "../logo";
 import { AuthenticationNavigation } from "./authentication-navigation";
 import { MainNavigation } from "./main-navigation";
 
