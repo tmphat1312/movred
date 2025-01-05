@@ -1,6 +1,6 @@
 import { SearchHeroSection } from "@/features/home/components/search-hero-section";
-import { TrendingMoviesSection } from "@/features/home/components/trending-movies-section";
-import { SectionPlaceholder } from "@/components/section-placeholder";
+import { PopularMoviesSection } from "@/features/popular-movies/components/popular-movies-section";
+import { TrendingMoviesSection } from "@/features/trending-movies/trending-movies-section";
 
 export default async function Home() {
   return (
@@ -8,7 +8,7 @@ export default async function Home() {
       <h1 className="text-bold sr-only mb-4 text-2xl">Home</h1>
       <SearchHeroSection />
       <TrendingMoviesSection />
-      <SectionPlaceholder />
+      <PopularMoviesSection />
     </main>
   );
 }
