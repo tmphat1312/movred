@@ -1,3 +1,4 @@
+import { getTrendingMovies } from "@/data/get-trending-movies";
 import { TimeWindowToggle } from "./time-window-toggle";
 import { TrendingMovies } from "./trending-movies";
 
@@ -10,7 +11,10 @@ export function TrendingMoviesSection() {
         </h3>
         <TimeWindowToggle />
       </div>
-      <TrendingMovies />
+      <TrendingMovies
+        trendingByDayPromise={getTrendingMovies({ time_window: "day" })}
+        trendingByWeekPromise={getTrendingMovies({ time_window: "week" })}
+      />
     </section>
   );
 }
