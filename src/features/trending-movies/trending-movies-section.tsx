@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+
+import { MovieCardsFallback } from "@/components/movie-cards-fallback";
 import { getTrendingMovies } from "@/data/get-trending-movies";
 import { TimeWindowToggle } from "./time-window-toggle";
 import { TrendingMovies } from "./trending-movies";
@@ -11,10 +14,12 @@ export function TrendingMoviesSection() {
         </h3>
         <TimeWindowToggle />
       </div>
-      <TrendingMovies
-        trendingByDayPromise={getTrendingMovies({ time_window: "day" })}
-        trendingByWeekPromise={getTrendingMovies({ time_window: "week" })}
-      />
+      <Suspense fallback={<MovieCardsFallback />}>
+        <TrendingMovies
+          trendingByDayPromise={getTrendingMovies({ time_window: "day" })}
+          trendingByWeekPromise={getTrendingMovies({ time_window: "week" })}
+        />
+      </Suspense>
     </section>
   );
 }
