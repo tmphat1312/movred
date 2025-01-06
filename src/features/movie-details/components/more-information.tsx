@@ -1,0 +1,40 @@
+import { getMovieDetails } from "../data/get-movie-details";
+
+export async function MoreInformation({ movieId }: { movieId: number }) {
+  const { status, budget, revenue, original_language } = (await getMovieDetails(
+    {
+      movie_id: movieId,
+    },
+  )) as {
+    status: string;
+    budget: number;
+    revenue: number;
+    original_language: string;
+  };
+
+  return (
+    <section className="space-y-6">
+      <h2 className="sr-only">More information</h2>
+      <div>Social Links</div>
+      <dl className="space-y-6">
+        <div>
+          <dt className="font-bold">Status</dt>
+          <dd>{status}</dd>
+        </div>
+        <div>
+          <dt className="font-bold">Original Language</dt>
+          <dd>{original_language}</dd>
+        </div>
+        <div>
+          <dt className="font-bold">Budget</dt>
+          <dd>${budget.toLocaleString()}</dd>
+        </div>
+        <div>
+          <dt className="font-bold">Revenue</dt>
+          <dd>${revenue.toLocaleString()}</dd>
+        </div>
+      </dl>
+      <div>Keywords</div>
+    </section>
+  );
+}
