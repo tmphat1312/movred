@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { UnderlineLink } from "./underline-link";
+import { UnderlineLink } from "./ui/underline-link";
 import { dateFormatter } from "@/lib/utils/date-formatters";
 import { RatingCircle } from "./rating-circle";
 

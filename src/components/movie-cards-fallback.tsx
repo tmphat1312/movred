@@ -1,4 +1,4 @@
-import { Shimmer } from "./shimmer";
+import { Shimmer } from "./ui/shimmer";
 import { Slider, SliderItem } from "./slider";
 
 export function MovieCardsFallback() {

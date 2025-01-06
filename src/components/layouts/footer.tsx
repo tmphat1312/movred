@@ -1,5 +1,5 @@
 import { FancyLogo } from "../fancy-logo";
-import { GradientLink } from "../gradient-link";
+import { GradientLink } from "../ui/gradient-link";
 
 export function Footer() {
   return (

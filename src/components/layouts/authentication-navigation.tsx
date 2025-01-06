@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { UnderlineLink } from "../underline-link";
+import { UnderlineLink } from "../ui/underline-link";
 
 export function AuthenticationNavigation() {
   return (
