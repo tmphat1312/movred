@@ -80,16 +80,21 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
             </section>
             <section>
               <h2 className="sr-only">Directing credits</h2>
-              <ul className="flex justify-between gap-8">
-                {Object.entries(groupedByName).map(([name, credits]) => (
-                  <li key={name}>
-                    <section>
-                      <h3 className="font-bold">{name}</h3>
-                      <p>{credits!.map((j) => j.job).join(", ")}</p>
-                    </section>
-                  </li>
-                ))}
+              <ul className="flex flex-wrap justify-between gap-8">
+                {Object.entries(groupedByName)
+                  .slice(0, 4)
+                  .map(([name, credits]) => (
+                    <li key={name}>
+                      <section>
+                        <h3 className="font-bold">{name}</h3>
+                        <p>{credits!.map((j) => j.job).join(", ")}</p>
+                      </section>
+                    </li>
+                  ))}
               </ul>
+              {crew.length > 4 && (
+                <p className="text-center text-sm font-bold">... and more</p>
+              )}
             </section>
           </div>
         </div>
