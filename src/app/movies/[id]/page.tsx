@@ -4,7 +4,10 @@ import {
   QuickInformationFallback,
 } from "@/features/movie-details/components/quick-information";
 import { SectionPlaceholder } from "@/components/section-placeholder";
-import { MoreInformation } from "@/features/movie-details/components/more-information";
+import {
+  MoreInformation,
+  MoreInformationFallback,
+} from "@/features/movie-details/components/more-information";
 import {
   Casts,
   CastsFallback,
@@ -44,7 +47,9 @@ export default async function MovieDetails({
             <Recommendations />
           </div>
           <div className="col-span-2">
-            <MoreInformation movieId={movieId} />
+            <Suspense fallback={<MoreInformationFallback />}>
+              <MoreInformation movieId={movieId} />
+            </Suspense>
           </div>
         </div>
         <SectionPlaceholder />

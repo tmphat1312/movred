@@ -1,3 +1,4 @@
+import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieDetails } from "../data/get-movie-details";
 
 export async function MoreInformation({ movieId }: { movieId: number }) {
@@ -32,6 +33,42 @@ export async function MoreInformation({ movieId }: { movieId: number }) {
         <div>
           <dt className="font-bold">Revenue</dt>
           <dd>${revenue.toLocaleString()}</dd>
+        </div>
+      </dl>
+      <div>Keywords</div>
+    </section>
+  );
+}
+
+export function MoreInformationFallback() {
+  return (
+    <section className="space-y-6">
+      <h2 className="sr-only">More information</h2>
+      <div>Social Links</div>
+      <dl className="space-y-6">
+        <div>
+          <dt className="font-bold">Status</dt>
+          <dd>
+            <Shimmer className="h-[22.5px] w-1/2" />
+          </dd>
+        </div>
+        <div>
+          <dt className="font-bold">Original Language</dt>
+          <dd>
+            <Shimmer className="h-[22.5px] w-1/5" />
+          </dd>
+        </div>
+        <div>
+          <dt className="font-bold">Budget</dt>
+          <dd>
+            <Shimmer className="h-[22.5px] w-2/3" />
+          </dd>
+        </div>
+        <div>
+          <dt className="font-bold">Revenue</dt>
+          <dd>
+            <Shimmer className="h-[22.5px] w-2/3" />
+          </dd>
         </div>
       </dl>
       <div>Keywords</div>
