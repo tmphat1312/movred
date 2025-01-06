@@ -46,7 +46,7 @@ export function SearchMovieForm() {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <button
-        className="green-gradient self-stretch rounded-full px-6 disabled:pointer-events-none disabled:opacity-80"
+        className="green-gradient hover:light-blue-gradient self-stretch rounded-full px-6 disabled:pointer-events-none disabled:grayscale"
         disabled={searchQuery.length === 0}
       >
         Search
