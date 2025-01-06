@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import { MovieCardsFallback } from "@/components/movie-cards-fallback";
-import { getTrendingMovies } from "@/data/get-trending-movies";
+import { getTrendingMovies } from "@/features/trending-movies/data/get-trending-movies";
 import { TimeWindowToggle } from "./time-window-toggle";
 import { TrendingMovies } from "./trending-movies";
 

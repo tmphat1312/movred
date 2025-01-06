@@ -1,6 +1,6 @@
 "use client";
 
-import { Kbd } from "@/components/kbd";
+import { Kbd } from "@/components/ui/kbd";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 

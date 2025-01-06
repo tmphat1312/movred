@@ -1,7 +1,7 @@
-import { ButtonLink } from "@/components/button-link";
+import { ButtonLink } from "@/components/ui/button-link";
 import { MovieCardsFallback } from "@/components/movie-cards-fallback";
 import { Suspense } from "react";
-import { getPopularMovies } from "../get-popular-movies";
+import { getPopularMovies } from "../data/get-popular-movies";
 import { PopularMovies } from "./popular-movies";
 
 export function PopularMoviesSection() {

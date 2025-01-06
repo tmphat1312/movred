@@ -1,6 +1,6 @@
 import { RatingCircle } from "@/components/rating-circle";
 import { TempLoadingIndicator } from "@/components/temp-loading-indicator";
-import { getMovieDetail } from "@/data/get-movie-detail";
+import { getMovieDetails } from "@/features/movie-details/data/get-movie-details";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -17,7 +17,7 @@ async function MainInformationWithoutSuspense({
 }: {
   movieId: number;
 }) {
-  const movie = await getMovieDetail({ movie_id: movieId });
+  const movie = await getMovieDetails({ movie_id: movieId });
   const length = `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`;
 
   return (

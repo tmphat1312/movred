@@ -1,6 +1,6 @@
 "use client";
 
-import { UnderlineLink } from "@/components/underline-link";
+import { UnderlineLink } from "@/components/ui/underline-link";
 import PlayButtonSrc from "@/assets/images/play-button.svg";
 import CloseButtonSrc from "@/assets/images/close-button.svg";
 

@@ -4,7 +4,7 @@ import { use } from "react";
 
 import { MovieCard, MovieCardProps } from "@/components/movie-card";
 import { Slider, SliderItem } from "@/components/slider";
-import { useTimeWindow } from "./hooks/use-time-window";
+import { useTimeWindow } from "../hooks/use-time-window";
 
 type MoviePromise = Promise<MovieCardProps[]>;
 
