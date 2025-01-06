@@ -6,6 +6,7 @@ import { getMovieDetails } from "@/features/movie-details/data/get-movie-details
 import { secondsToHM } from "@/lib/utils/number-helpers";
 import { UserActions } from "./user-actions";
 import { getMovieCredits } from "../data/get-movie-credits";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function QuickInformation({ movieId }: { movieId: number }) {
   const [movie, credits] = await Promise.all([
@@ -91,6 +92,19 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
               </ul>
             </section>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function QuickInformationFallback() {
+  return (
+    <div className="h-[530px]">
+      <div className="bg-gray-200" aria-hidden="true">
+        <div className="container grid grid-cols-[auto_1fr] items-center gap-12 py-10 text-layout-fg">
+          <Shimmer className="h-[450px] w-[300px] rounded-lg" />
+          <Shimmer className="h-[450px] w-full rounded-lg" />
         </div>
       </div>
     </div>
