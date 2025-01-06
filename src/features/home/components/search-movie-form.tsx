@@ -1,6 +1,5 @@
 "use client";
 
-import { Kbd } from "@/components/ui/kbd";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -46,7 +45,6 @@ export function SearchMovieForm() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <Kbd>/</Kbd>
       <button
         className="green-gradient self-stretch rounded-full px-6 disabled:pointer-events-none disabled:opacity-80"
         disabled={searchQuery.length === 0}
