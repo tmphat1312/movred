@@ -1,6 +1,6 @@
 import { Section } from "@/components/layouts/section";
 import { Suspense } from "react";
-import { LatestTrailers } from "./latest-trailers";
+import { LatestTrailers, LatestTrailersFallback } from "./latest-trailers";
 import { getLatestTrailers } from "../data/get-latest-trailers";
 
 export function LatestTrailersSection() {
@@ -12,7 +12,7 @@ export function LatestTrailersSection() {
             Latest Trailers
           </h3>
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LatestTrailersFallback />}>
           <LatestTrailers latestTrailersPromise={getLatestTrailers()} />
         </Suspense>
       </Section>
