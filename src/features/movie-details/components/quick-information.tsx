@@ -92,9 +92,6 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
                     </li>
                   ))}
               </ul>
-              {crew.length > 4 && (
-                <p className="text-center text-sm font-bold">... and more</p>
-              )}
             </section>
           </div>
         </div>
@@ -105,7 +102,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
 
 export function QuickInformationFallback() {
   return (
-    <div className="h-[530px]">
+    <div className="h-[536px]">
       <div className="bg-gray-200" aria-hidden="true">
         <div className="container grid grid-cols-[auto_1fr] items-center gap-12 py-10 text-layout-fg">
           <Shimmer className="h-[450px] w-[300px] rounded-lg" />
