@@ -1,4 +1,4 @@
-import { getSearchResults } from "@/data/get-search-results";
+import { getSearchResults } from "@/features/search-movies/data/get-search-results";
 import { SearchResultCard } from "./search-result-card";
 import { SearchResultsPagination } from "./search-results-pagination";
 
