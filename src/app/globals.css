@@ -117,6 +117,13 @@ body {
     color: #ffffff;
   }
 
+  .text-light-blue-gradient {
+    background: linear-gradient(90deg, #13b6dc 60%, #649ca9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .black-gradient {
     background-image: linear-gradient(
       to right,
