@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getCastDetails } from "../data/get-cast-details";
 import { GENDER_MAP } from "@/constants/gender";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function PersonalInformation({ castId }: { castId: number }) {
   const castDetails = (await getCastDetails({ castId })) as {
@@ -38,8 +39,6 @@ export async function PersonalInformation({ castId }: { castId: number }) {
           <dd className="mb-4 text-pretty">
             {castDetails.known_for_department}
           </dd>
-          <dt className="mb-0.5 font-medium">Know Credits</dt>
-          <dd className="mb-4 text-pretty">11</dd>
           <dt className="mb-0.5 font-medium">Gender</dt>
           <dd className="mb-4 text-pretty">{GENDER_MAP[castDetails.gender]}</dd>
           <dt className="mb-0.5 font-medium">Date of Birth</dt>
@@ -59,6 +58,40 @@ export async function PersonalInformation({ castId }: { castId: number }) {
             {castDetails.also_known_as.map((name) => (
               <div key={name}>{name}</div>
             ))}
+          </dd>
+        </dl>
+      </section>
+    </div>
+  );
+}
+
+export function PersonalInformationFallback() {
+  return (
+    <div className="space-y-8">
+      <Shimmer className="h-[450px] w-[300px] rounded-lg bg-gray-50/80 brightness-95" />
+      <section>
+        <h2 className="mb-1.5 text-2xl font-semibold">Personal Info</h2>
+        <dl>
+          <dt className="mb-0.5 font-medium">Known For</dt>
+          <dd className="mb-4 text-pretty">
+            <Shimmer className="h-[24px] w-1/2" />
+          </dd>
+          <dt className="mb-0.5 font-medium">Gender</dt>
+          <dd className="mb-4 text-pretty">
+            <Shimmer className="h-[24px] w-1/3" />
+          </dd>
+          <dt className="mb-0.5 font-medium">Date of Birth</dt>
+          <dd className="mb-4 text-pretty">
+            <Shimmer className="h-[24px] w-1/2" />
+          </dd>
+
+          <dt className="mb-0.5 font-medium">Place of Birth</dt>
+          <dd className="mb-4 text-pretty">
+            <Shimmer className="h-[24px] w-1/2" />
+          </dd>
+          <dt className="mb-0.5 font-medium">Also Known As</dt>
+          <dd className="mb-4 text-pretty">
+            <Shimmer className="h-[24px] w-1/2" />
           </dd>
         </dl>
       </section>

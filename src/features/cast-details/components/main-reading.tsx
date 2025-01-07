@@ -5,6 +5,7 @@ import { getCastDetails } from "../data/get-cast-details";
 import { getCastMovieCredits } from "../data/get-cast-movie-credits";
 import { Biography } from "./biography";
 import { OutlineDot } from "./outline-dot";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function MainReading({ castId }: { castId: number }) {
   const [castDetails, movieCredits] = await Promise.all([
@@ -117,6 +118,43 @@ export async function MainReading({ castId }: { castId: number }) {
             ))}
           </tbody>
         </table>
+      </section>
+    </div>
+  );
+}
+
+export function MainReadingFallback() {
+  return (
+    <div className="space-y-6" aria-hidden="true">
+      <Shimmer className="h-[40px] w-[300px] bg-gray-50/80" />
+      <section>
+        <h2 className="mb-2 text-xl font-semibold">Biography</h2>
+        <div>
+          <Shimmer className="mb-[5px] h-[16px] w-full rounded bg-gray-50/80" />
+          <Shimmer className="mb-[5px] h-[16px] w-full rounded bg-gray-50/80" />
+          <Shimmer className="mb-[5px] h-[16px] w-full rounded bg-gray-50/80" />
+          <Shimmer className="mb-[5px] h-[16px] w-full rounded bg-gray-50/80" />
+          <Shimmer className="mb-[5px] h-[16px] w-full rounded bg-gray-50/80" />
+          <Shimmer className="h-[15px] w-2/3 rounded bg-gray-50/80" />
+        </div>
+      </section>
+      <section>
+        <h2 className="mb-2 text-xl font-semibold">Known For</h2>
+        <Slider>
+          {Array.from({ length: 10 }).map((_, index) => (
+            <SliderItem key={index}>
+              <article className="w-[130px]">
+                <Shimmer className="mb-3 h-[195px] w-full rounded-lg bg-gray-50/80" />
+                <Shimmer className="mb-1 h-[18px] w-full rounded bg-gray-50/80 text-center text-sm" />
+                <Shimmer className="mx-auto h-[18px] w-1/2 rounded bg-gray-50/80 text-center text-sm" />
+              </article>
+            </SliderItem>
+          ))}
+        </Slider>
+      </section>
+      <section>
+        <h2 className="mb-2 text-xl font-semibold">Acting</h2>
+        <Shimmer className="h-[400px] w-full rounded-lg bg-gray-50/80" />
       </section>
     </div>
   );
