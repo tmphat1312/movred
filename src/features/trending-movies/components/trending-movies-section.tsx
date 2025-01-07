@@ -12,7 +12,9 @@ export function TrendingMoviesSection() {
         <h3 className="text-2xl font-semibold" aria-label="Trending movies">
           Trending
         </h3>
-        <TimeWindowToggle />
+        <Suspense>
+          <TimeWindowToggle />
+        </Suspense>
       </div>
       <Suspense fallback={<MovieCardsFallback />}>
         <TrendingMovies
