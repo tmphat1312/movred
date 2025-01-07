@@ -17,7 +17,6 @@ export async function getSearchResults({ query, page = 1 }: Options) {
     };
 
   const params = new URLSearchParams({ page: page.toString(), query });
-  console.log(`/search/movie?${params}`);
   const response = await apiClient.get(`/search/movie?${params}`);
   const typedResponse = mask(response.data, SMovieSearchResults);
 
