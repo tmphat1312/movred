@@ -45,7 +45,6 @@ export async function MainReading({ castId }: { castId: number }) {
     moviesGroupedByYearArray.unshift(notAvailableYear);
   }
 
-  console.log(moviesGroupedByYearArray);
   return (
     <div className="space-y-6">
       <h1 className="text-4xl font-bold">{castDetails.name}</h1>
