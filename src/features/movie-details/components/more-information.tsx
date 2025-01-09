@@ -40,7 +40,7 @@ export async function MoreInformation({ movieId }: { movieId: number }) {
           <dd>${revenue.toLocaleString()}</dd>
         </div>
         <div>
-          <dt>Keywords</dt>
+          <dt className="mb-2 font-bold">Keywords</dt>
           <dd>
             <Suspense fallback={<KeywordsFallback />}>
               <Keywords movieId={movieId} />
