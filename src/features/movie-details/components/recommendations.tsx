@@ -17,6 +17,8 @@ export async function Recommendations({ movieId }: { movieId: number }) {
   const toVotePercentage = (voteAverage: number) =>
     `${Math.ceil(voteAverage * 10)}%`;
 
+  if (!recommendations.length) return <p>There is not recommendations yet.</p>;
+
   return (
     <Slider>
       {recommendations.map((recommendation) => (
