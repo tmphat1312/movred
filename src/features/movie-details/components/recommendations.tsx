@@ -31,7 +31,7 @@ export async function Recommendations({ movieId }: { movieId: number }) {
                 alt={recommendation.title}
                 width={250}
                 height={141}
-                className="h-[141px] w-[250px] rounded-lg"
+                className="h-[141px] w-[250px] rounded-lg bg-gray-100"
               />
               <div className="absolute inset-x-0 bottom-0 hidden items-center gap-1.5 bg-white/90 px-2.5 py-1.5 group-hover:flex">
                 <FaRegCalendarAlt size={14} />
