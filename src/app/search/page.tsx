@@ -3,6 +3,7 @@ import { FilterForm } from "@/features/search-movies/components/filter-form";
 import { NoKeyword } from "@/features/search-movies/components/no-keyword";
 import { SearchKeywordForm } from "@/features/search-movies/components/search-keyword-form";
 import { SearchResults } from "@/features/search-movies/components/search-results";
+import { Suspense } from "react";
 
 export default async function Search({
   searchParams,
@@ -15,7 +16,9 @@ export default async function Search({
   return (
     <main>
       <h1 className="sr-only">Search results page</h1>
-      <SearchKeywordForm />
+      <Suspense>
+        <SearchKeywordForm />
+      </Suspense>
       <div className="container py-4">
         {query ? (
           <div className="grid grid-cols-12">

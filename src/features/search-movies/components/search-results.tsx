@@ -1,6 +1,7 @@
 import { getSearchResults } from "@/features/search-movies/data/get-search-results";
 import { SearchResultCard } from "./search-result-card";
 import { SearchResultsPagination } from "./search-results-pagination";
+import { Suspense } from "react";
 
 export async function SearchResults({
   searchQuery,
@@ -20,10 +21,12 @@ export async function SearchResults({
           </li>
         ))}
       </ul>
-      <SearchResultsPagination
-        currentPage={page}
-        totalPages={data.total_pages}
-      />
+      <Suspense>
+        <SearchResultsPagination
+          currentPage={page}
+          totalPages={data.total_pages}
+        />
+      </Suspense>
     </>
   );
 }
