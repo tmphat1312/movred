@@ -9,11 +9,11 @@ export function getPaginationPages({
     return Array.from({ length: totalPages }, (_, i) => i + 1);
   }
 
-  if (currentPage <= 5) {
+  if (currentPage < 5) {
     return [1, 2, 3, 4, 5, "...", totalPages];
   }
 
-  if (currentPage >= totalPages - 4) {
+  if (currentPage > totalPages - 4) {
     return [
       1,
       "...",
