@@ -15,6 +15,10 @@ export async function Casts({ movieId }: { movieId: number }) {
     }[];
   };
 
+  if (cast.length === 0) {
+    return <p>No information about the casts yet.</p>;
+  }
+
   return (
     <Slider>
       {cast.map((person) => (
