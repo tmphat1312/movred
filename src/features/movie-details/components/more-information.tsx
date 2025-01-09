@@ -1,5 +1,8 @@
 import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieDetails } from "../data/get-movie-details";
+import { SocialLinks, SocialLinksFallback } from "./social-links";
+import { Suspense } from "react";
+import { Keywords, KeywordsFallback } from "./keywords";
 
 export async function MoreInformation({ movieId }: { movieId: number }) {
   const { status, budget, revenue, original_language } = (await getMovieDetails(
@@ -16,7 +19,9 @@ export async function MoreInformation({ movieId }: { movieId: number }) {
   return (
     <section className="space-y-6">
       <h2 className="sr-only">More information</h2>
-      <div>Social Links</div>
+      <Suspense fallback={<SocialLinksFallback />}>
+        <SocialLinks movieId={movieId} />
+      </Suspense>
       <dl className="space-y-6">
         <div>
           <dt className="font-bold">Status</dt>
@@ -34,8 +39,15 @@ export async function MoreInformation({ movieId }: { movieId: number }) {
           <dt className="font-bold">Revenue</dt>
           <dd>${revenue.toLocaleString()}</dd>
         </div>
+        <div>
+          <dt>Keywords</dt>
+          <dd>
+            <Suspense fallback={<KeywordsFallback />}>
+              <Keywords movieId={movieId} />
+            </Suspense>
+          </dd>
+        </div>
       </dl>
-      <div>Keywords</div>
     </section>
   );
 }
@@ -44,7 +56,7 @@ export function MoreInformationFallback() {
   return (
     <section className="space-y-6">
       <h2 className="sr-only">More information</h2>
-      <div>Social Links</div>
+      <SocialLinksFallback />
       <dl className="space-y-6">
         <div>
           <dt className="font-bold">Status</dt>
@@ -70,8 +82,13 @@ export function MoreInformationFallback() {
             <Shimmer className="h-[22.5px] w-2/3" />
           </dd>
         </div>
+        <div>
+          <dt>Keywords</dt>
+          <dd>
+            <KeywordsFallback />
+          </dd>
+        </div>
       </dl>
-      <div>Keywords</div>
     </section>
   );
 }
