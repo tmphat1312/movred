@@ -3,7 +3,10 @@ import { UnderlineLink } from "../ui/underline-link";
 
 export function AuthenticationNavigation() {
   return (
-    <nav className="p-2" aria-label="Authentication navigation">
+    <nav
+      className="flex items-center gap-4 p-2"
+      aria-label="Authentication navigation"
+    >
       <SignedOut>
         <UnderlineLink className="inline-block p-2" href="/sign-in">
           Login
@@ -13,6 +16,9 @@ export function AuthenticationNavigation() {
         </UnderlineLink>
       </SignedOut>
       <SignedIn>
+        <UnderlineLink className="inline-block p-2" href="/profile">
+          My Activities
+        </UnderlineLink>
         <UserButton />
       </SignedIn>
     </nav>
