@@ -13,10 +13,10 @@ export default async function Search({
   const page = Number((await searchParams).page || "1");
 
   return (
-    <main className="container space-y-2">
+    <main>
       <h1 className="sr-only">Search results page</h1>
       <SearchKeywordForm />
-      <div className="py-4">
+      <div className="container py-4">
         {query ? (
           <div className="grid grid-cols-12">
             <div className="col-span-3">
