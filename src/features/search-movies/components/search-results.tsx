@@ -1,16 +1,22 @@
 import { getSearchResults } from "@/features/search-movies/data/get-search-results";
+import { Suspense } from "react";
 import { SearchResultCard } from "./search-result-card";
 import { SearchResultsPagination } from "./search-results-pagination";
-import { Suspense } from "react";
 
 export async function SearchResults({
   searchQuery,
   page = 1,
+  sortBy = "popularity.desc",
 }: {
   searchQuery: string;
   page?: number;
+  sortBy?: string;
 }) {
-  const data = await getSearchResults({ query: searchQuery, page });
+  const data = await getSearchResults({
+    query: searchQuery,
+    page,
+    sort_by: sortBy,
+  });
 
   return (
     <>
