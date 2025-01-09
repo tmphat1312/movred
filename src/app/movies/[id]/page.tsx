@@ -1,25 +1,24 @@
+import { SectionPlaceholder } from "@/components/section-placeholder";
 import { Banner } from "@/features/movie-details/components/banner";
 import {
-  QuickInformation,
-  QuickInformationFallback,
-} from "@/features/movie-details/components/quick-information";
-import { SectionPlaceholder } from "@/components/section-placeholder";
+  Casts,
+  CastsFallback,
+} from "@/features/movie-details/components/casts";
 import {
   MoreInformation,
   MoreInformationFallback,
 } from "@/features/movie-details/components/more-information";
 import {
-  Casts,
-  CastsFallback,
-} from "@/features/movie-details/components/casts";
-import { Reviews } from "@/features/movie-details/components/reviews";
-import { Media } from "@/features/movie-details/components/media";
+  QuickInformation,
+  QuickInformationFallback,
+} from "@/features/movie-details/components/quick-information";
+import { Rating } from "@/features/movie-details/components/rating";
 import {
   Recommendations,
   RecommendationsFallback,
 } from "@/features/movie-details/components/recommendations";
+import { Reviews } from "@/features/movie-details/components/reviews";
 import { Suspense } from "react";
-import { Rating } from "@/features/movie-details/components/rating";
 
 export default async function MovieDetails({
   params,
@@ -46,7 +45,6 @@ export default async function MovieDetails({
             </section>
             <Reviews />
             <Rating />
-            <Media />
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Recommendations</h3>
               <Suspense fallback={<RecommendationsFallback />}>
