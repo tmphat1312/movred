@@ -14,7 +14,10 @@ import {
 } from "@/features/movie-details/components/casts";
 import { Reviews } from "@/features/movie-details/components/reviews";
 import { Media } from "@/features/movie-details/components/media";
-import { Recommendations } from "@/features/movie-details/components/recommendations";
+import {
+  Recommendations,
+  RecommendationsFallback,
+} from "@/features/movie-details/components/recommendations";
 import { Suspense } from "react";
 import { Rating } from "@/features/movie-details/components/rating";
 
@@ -44,7 +47,12 @@ export default async function MovieDetails({
             <Reviews />
             <Rating />
             <Media />
-            <Recommendations />
+            <section>
+              <h3 className="mb-2.5 text-2xl font-bold">Recommendations</h3>
+              <Suspense fallback={<RecommendationsFallback />}>
+                <Recommendations movieId={movieId} />
+              </Suspense>
+            </section>
           </div>
           <div className="col-span-2">
             <Suspense fallback={<MoreInformationFallback />}>
