@@ -1,5 +1,12 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { UnderlineLink } from "../ui/underline-link";
+import { Shimmer } from "../ui/shimmer";
 
 export function AuthenticationNavigation() {
   return (
@@ -19,7 +26,14 @@ export function AuthenticationNavigation() {
         <UnderlineLink className="inline-block p-2" href="/profile">
           My Activities
         </UnderlineLink>
-        <UserButton />
+        <div className="flex w-[28px] items-center">
+          <ClerkLoading>
+            <Shimmer className="size-[28px] rounded-full" />
+          </ClerkLoading>
+          <ClerkLoaded>
+            <UserButton />
+          </ClerkLoaded>
+        </div>
       </SignedIn>
     </nav>
   );
