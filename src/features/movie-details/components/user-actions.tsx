@@ -1,9 +1,9 @@
 import { PlayModalButton } from "./play-modal-button";
 
-export function UserActions() {
+export function UserActions({ movieId }: { movieId: number }) {
   return (
     <div className="h-[60px]">
-      <PlayModalButton />
+      <PlayModalButton movieId={movieId} />
     </div>
   );
 }
