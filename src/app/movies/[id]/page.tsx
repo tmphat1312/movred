@@ -46,12 +46,18 @@ export default async function MovieDetails({
             </section>
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Review</h3>
-              <Suspense>
-                <YourReview />
-              </Suspense>
-              <Suspense>
-                <ReviewList />
-              </Suspense>
+              <div className="grid grid-cols-12 gap-8">
+                <div className="col-span-7">
+                  <Suspense>
+                    <ReviewList />
+                  </Suspense>
+                </div>
+                <div className="col-span-5">
+                  <Suspense>
+                    <YourReview />
+                  </Suspense>
+                </div>
+              </div>
             </section>
             <Rating />
             <section>
