@@ -1,6 +1,6 @@
 import { apiClient } from "@/lib/apiClient";
 
-async function getMovieTrailer({ id }: { id: number }) {
+export async function getMovieTrailer({ id }: { id: number }) {
   const response = await apiClient.get(`/movie/${id}/videos`);
   return response.data.results[0];
 }
