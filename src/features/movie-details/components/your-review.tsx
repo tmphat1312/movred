@@ -1,9 +1,11 @@
+import { UnderlineLink } from "@/components/ui/underline-link";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+
 export function YourReview() {
   const yourReview = "";
 
   return (
-    <section>
-      <h4 className="mb-2 font-medium">Your review</h4>
+    <Layout>
       {yourReview ? (
         <p>{yourReview}</p>
       ) : (
@@ -20,6 +22,22 @@ export function YourReview() {
           </button>
         </form>
       )}
+    </Layout>
+  );
+}
+
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <section>
+      <h4 className="mb-2 font-medium">Your review</h4>
+      <SignedIn>{children}</SignedIn>
+      <SignedOut>
+        <div className="w-fit rounded-md bg-layout-bg px-2 py-1 text-sm text-layout-fg">
+          <UnderlineLink href="/sign-in">
+            Sign in to post a review for this movie
+          </UnderlineLink>
+        </div>
+      </SignedOut>
     </section>
   );
 }
