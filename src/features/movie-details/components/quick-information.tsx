@@ -72,7 +72,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
                 What&apos;s your Vibe?
               </div>
             </div>
-            <UserActions />
+            <UserActions movieId={movie.id} />
             <p className="mb-2 text-lg italic opacity-80">{movie.tagline}</p>
             <section className="mb-6">
               <h2 className="mb-2 text-xl font-semibold">Overview</h2>
