@@ -1,4 +1,3 @@
-import { SectionPlaceholder } from "@/components/section-placeholder";
 import { Banner } from "@/features/movie-details/components/banner";
 import {
   Casts,
@@ -73,7 +72,6 @@ export default async function MovieDetails({
             </Suspense>
           </div>
         </div>
-        <SectionPlaceholder />
       </main>
     </>
   );
