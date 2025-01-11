@@ -5,7 +5,7 @@ import PlayButtonSrc from "@/assets/images/play-button.svg";
 import CloseButtonSrc from "@/assets/images/close-button.svg";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export type TrailerCardProps = {
   id: number;
@@ -43,6 +43,19 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
       `https://www.youtube.com/embed/${trailer.key}?autoplay=1&enablejsapi=1`,
     );
   }
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        handleCloseTrailerModal();
+      }
+    }
+
+    dialog.current?.addEventListener("keydown", handleKeyDown);
+    return () => {
+      dialog.current?.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <article className="w-[300px] text-center">
