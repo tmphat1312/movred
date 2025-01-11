@@ -27,6 +27,15 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
   const iframe = useRef<HTMLIFrameElement>(null);
   const trailerName = getShortenedName(trailer.name);
 
+  function handleCloseTrailerModal() {
+    dialog.current?.close();
+    iframe.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: "stopVideo" }),
+      "*",
+    );
+    iframe.current?.setAttribute("src", "");
+  }
+
   return (
     <article className="w-[300px] text-center">
       <dialog
@@ -36,15 +45,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
         <section className="flex items-center justify-between gap-4 border-b-4 px-4 py-2.5">
           <h2 className="line-clamp-2 text-lg">{trailer.name}</h2>
           <button
-            className=""
-            onClick={() => {
-              dialog.current?.close();
-              iframe.current?.contentWindow?.postMessage(
-                JSON.stringify({ event: "command", func: "stopVideo" }),
-                "*",
-              );
-              iframe.current?.setAttribute("src", "");
-            }}
+            onClick={handleCloseTrailerModal}
             aria-label="Close trailer modal"
           >
             <Image src={CloseButtonSrc} alt="" width={24} height={24} />
