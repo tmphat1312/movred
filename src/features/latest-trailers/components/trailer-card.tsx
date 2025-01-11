@@ -15,12 +15,17 @@ export type TrailerCardProps = {
   name: string;
 };
 
+function getShortenedName(name: string) {
+  const SHORT_LENGTH = 38;
+  return name.length > SHORT_LENGTH
+    ? `${name.slice(0, SHORT_LENGTH)}...`
+    : name;
+}
+
 export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const iframe = useRef<HTMLIFrameElement>(null);
-
-  const trailerName =
-    trailer.name.length > 38 ? `${trailer.name.slice(0, 38)}...` : trailer.name;
+  const trailerName = getShortenedName(trailer.name);
 
   return (
     <article className="w-[300px] text-center">
