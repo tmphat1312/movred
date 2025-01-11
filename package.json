@@ -10,10 +10,11 @@
     "format": "prettier --write --list-different .",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "import-data": "tsx ./src/db/importData.ts"
+    "import-data": "tsx ./src/db/import_data.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.6.0",
+    "@libsql/client": "^0.14.0",
     "axios": "^1.7.9",
     "better-sqlite3": "^11.7.0",
     "clsx": "^2.1.1",

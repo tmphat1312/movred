@@ -45,6 +45,3 @@ next-env.d.ts
 
 # tmdb_json data
 /tmdb_json
-
-# import data
-/src/db/import_data.ts
