@@ -58,7 +58,12 @@ export default async function MovieDetails({
                 </div>
               </div>
             </section>
-            <Rating />
+            <section>
+              <h3 className="mb-2.5 text-2xl font-bold">Rating</h3>
+              <Suspense>
+                <Rating />
+              </Suspense>
+            </section>
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Recommendations</h3>
               <Suspense fallback={<RecommendationsFallback />}>
