@@ -43,6 +43,7 @@ export function PlayTrailerModal({
 
     dialog.current?.addEventListener("keydown", handleKeyDown);
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       dialog.current?.removeEventListener("keydown", handleKeyDown);
     };
   }, []);

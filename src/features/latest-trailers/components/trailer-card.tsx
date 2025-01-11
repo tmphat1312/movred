@@ -53,6 +53,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
 
     dialog.current?.addEventListener("keydown", handleKeyDown);
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       dialog.current?.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
