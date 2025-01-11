@@ -45,7 +45,7 @@ export default async function MovieDetails({
               </Suspense>
             </section>
             <section>
-              <h3 className="mb-2.5 text-2xl font-bold">Review</h3>
+              <h3 className="mb-2.5 text-2xl font-bold">Reviews</h3>
               <div className="grid grid-cols-12 gap-8">
                 <div className="col-span-7">
                   <Suspense>
