@@ -36,6 +36,14 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
     iframe.current?.setAttribute("src", "");
   }
 
+  function handleOpenTrailerModal() {
+    dialog.current?.showModal();
+    iframe.current?.setAttribute(
+      "src",
+      `https://www.youtube.com/embed/${trailer.key}?autoplay=1&enablejsapi=1`,
+    );
+  }
+
   return (
     <article className="w-[300px] text-center">
       <dialog
@@ -61,14 +69,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
       <div
         className="group relative cursor-pointer"
         aria-label="Open trailer modal"
-        onClick={() => {
-          dialog.current?.showModal();
-
-          iframe.current?.setAttribute(
-            "src",
-            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&enablejsapi=1`,
-          );
-        }}
+        onClick={handleOpenTrailerModal}
       >
         <button className="absolute left-[-9999px] bg-slate-200 px-2 py-1 text-slate-900 focus:left-[10px] focus:top-[10px]">
           Open trailer player
