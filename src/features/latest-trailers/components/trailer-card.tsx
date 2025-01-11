@@ -5,7 +5,7 @@ import PlayButtonSrc from "@/assets/images/play-button.svg";
 import CloseButtonSrc from "@/assets/images/close-button.svg";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export type TrailerCardProps = {
   id: number;
@@ -15,12 +15,47 @@ export type TrailerCardProps = {
   name: string;
 };
 
+function getShortenedName(name: string) {
+  const SHORT_LENGTH = 38;
+  return name.length > SHORT_LENGTH
+    ? `${name.slice(0, SHORT_LENGTH)}...`
+    : name;
+}
+
 export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const iframe = useRef<HTMLIFrameElement>(null);
+  const trailerName = getShortenedName(trailer.name);
 
-  const trailerName =
-    trailer.name.length > 38 ? `${trailer.name.slice(0, 38)}...` : trailer.name;
+  function handleCloseTrailerModal() {
+    dialog.current?.close();
+    iframe.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: "stopVideo" }),
+      "*",
+    );
+    iframe.current?.setAttribute("src", "");
+  }
+
+  function handleOpenTrailerModal() {
+    dialog.current?.showModal();
+    iframe.current?.setAttribute(
+      "src",
+      `https://www.youtube.com/embed/${trailer.key}?autoplay=1&enablejsapi=1`,
+    );
+  }
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        handleCloseTrailerModal();
+      }
+    }
+
+    dialog.current?.addEventListener("keydown", handleKeyDown);
+    return () => {
+      dialog.current?.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <article className="w-[300px] text-center">
@@ -31,15 +66,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
         <section className="flex items-center justify-between gap-4 border-b-4 px-4 py-2.5">
           <h2 className="line-clamp-2 text-lg">{trailer.name}</h2>
           <button
-            className=""
-            onClick={() => {
-              dialog.current?.close();
-              iframe.current?.contentWindow?.postMessage(
-                JSON.stringify({ event: "command", func: "stopVideo" }),
-                "*",
-              );
-              iframe.current?.setAttribute("src", "");
-            }}
+            onClick={handleCloseTrailerModal}
             aria-label="Close trailer modal"
           >
             <Image src={CloseButtonSrc} alt="" width={24} height={24} />
@@ -55,14 +82,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
       <div
         className="group relative cursor-pointer"
         aria-label="Open trailer modal"
-        onClick={() => {
-          dialog.current?.showModal();
-
-          iframe.current?.setAttribute(
-            "src",
-            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&enablejsapi=1`,
-          );
-        }}
+        onClick={handleOpenTrailerModal}
       >
         <button className="absolute left-[-9999px] bg-slate-200 px-2 py-1 text-slate-900 focus:left-[10px] focus:top-[10px]">
           Open trailer player
