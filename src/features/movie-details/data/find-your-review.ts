@@ -9,8 +9,10 @@ export async function findYourReview({
   movieId: number;
   userId: number;
 }) {
-  return await db
+  const yourReviews = await db
     .select()
     .from(reviews)
     .where(and(eq(reviews.movie_id, movieId), eq(reviews.user_id, userId)));
+
+  return yourReviews[0];
 }
