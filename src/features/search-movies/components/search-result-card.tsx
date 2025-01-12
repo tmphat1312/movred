@@ -1,4 +1,4 @@
-import { UnderlineLink } from "@/components/underline-link";
+import { UnderlineLink } from "@/components/ui/underline-link";
 import { dateFormatter } from "@/lib/utils/date-formatters";
 import Image from "next/image";
 import Link from "next/link";

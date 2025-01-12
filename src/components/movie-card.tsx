@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { UnderlineLink } from "./underline-link";
+import { UnderlineLink } from "./ui/underline-link";
 import { dateFormatter } from "@/lib/utils/date-formatters";
 import { RatingCircle } from "./rating-circle";
 
-export function MovieCard(movie: {
+export type MovieCardProps = {
   id: number;
   title: string;
   release_date: string;
   poster_path: string;
   vote_average: number;
-}) {
+};
+
+export function MovieCard(movie: MovieCardProps) {
   return (
     <article className="inline-block w-[150px] min-w-[150px] snap-center">
       <div className="div relative mb-4">

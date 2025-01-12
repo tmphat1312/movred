@@ -16,17 +16,9 @@
   --link-hover: #13b6dc;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer base {
@@ -39,30 +31,62 @@ body {
     background-size: cover;
     shape-margin: 1rem;
   }
+}
 
+@layer components {
   .custom-scrollbar {
-    --sb-track-color: #ffffff;
-    --sb-thumb-color: #6baf8d;
-    --sb-size: 6px;
+    --sb-track-color: transparent;
+    --sb-thumb-color: #dbdbdb;
+    --sb-size: 8px;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
     width: var(--sb-size);
+    height: var(--sb-size);
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: var(--sb-track-color);
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
-    border-radius: 3px;
+    border-radius: 4px;
   }
 
   @supports not selector(::-webkit-scrollbar) {
     body {
       scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  }
+
+  .shimmer {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+    background-size: 1200px 100%;
+  }
+
+  @-webkit-keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1200px 0;
+    }
+    100% {
+      background-position: 1200px 0;
     }
   }
 }
@@ -93,14 +117,19 @@ body {
     color: #ffffff;
   }
 
+  .text-light-blue-gradient {
+    background: linear-gradient(90deg, #13b6dc 60%, #649ca9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .black-gradient {
-    /* background: linear-gradient(90deg, #000000 0%, #434343 100%);
-    color: #ffffff; */
     background-image: linear-gradient(
       to right,
-      rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px),
-      rgba(31.5, 31.5, 31.5, 0.84) 50%,
-      rgba(31.5, 31.5, 31.5, 0.84) 100%
+      rgba(31.5, 31.5, 31.5, 0.5) calc((50vw - 170px) - 340px),
+      rgba(31.5, 31.5, 31.5, 0.8) 50%,
+      rgba(31.5, 31.5, 31.5, 0.6) 100%
     );
   }
 }

@@ -44,4 +44,9 @@
     ],
     "description": "Create a custom hook function",
   },
+  "Add component props based on a html element": {
+    "prefix": "/props",
+    "body": "{ className, ...props }: React.ComponentProps<\"$1\">",
+    "description": "Add component props based on a html element",
+  },
 }

@@ -1,9 +1,19 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { UnderlineLink } from "../underline-link";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { UnderlineLink } from "../ui/underline-link";
+import { Shimmer } from "../ui/shimmer";
 
 export function AuthenticationNavigation() {
   return (
-    <nav className="p-2" aria-label="Authentication navigation">
+    <nav
+      className="flex items-center gap-4 p-2"
+      aria-label="Authentication navigation"
+    >
       <SignedOut>
         <UnderlineLink className="inline-block p-2" href="/sign-in">
           Login
@@ -13,7 +23,17 @@ export function AuthenticationNavigation() {
         </UnderlineLink>
       </SignedOut>
       <SignedIn>
-        <UserButton />
+        <UnderlineLink className="inline-block p-2" href="/profile">
+          My Activities
+        </UnderlineLink>
+        <div className="flex w-[28px] items-center">
+          <ClerkLoading>
+            <Shimmer className="size-[28px] rounded-full" />
+          </ClerkLoading>
+          <ClerkLoaded>
+            <UserButton />
+          </ClerkLoaded>
+        </div>
       </SignedIn>
     </nav>
   );
