@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 export const EnviromentVariables = {
   get TMDB_READ_ACCESS_TOKEN() {
     return this.getEnvVariable("TMDB_READ_ACCESS_TOKEN");
