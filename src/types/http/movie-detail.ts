@@ -7,7 +7,6 @@ import {
   nullable,
   optional,
   integer,
-  Infer,
 } from "superstruct";
 
 export const SMovieDetail = object({
@@ -70,7 +69,3 @@ export const SMovieDetail = object({
 });
 
 export const SMovieDetailsHttpResponse = SMovieDetail;
-
-export type TTrendingMoviesHttpResponse = Infer<
-  typeof SMovieDetailsHttpResponse
->;
