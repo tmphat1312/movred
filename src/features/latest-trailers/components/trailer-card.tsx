@@ -6,11 +6,12 @@ import CloseButtonSrc from "@/assets/images/close-button.svg";
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { Nullable } from "@/types/utilities";
 
 export type TrailerCardProps = {
   id: number;
   title: string;
-  backdrop_path: string;
+  backdrop_path: Nullable<string>;
   key: string;
   name: string;
 };
