@@ -73,3 +73,20 @@ export const reviews = sqliteTable(
     primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
   ],
 );
+
+export const ratings = sqliteTable(
+  "ratings",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    rating: real().notNull(),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
