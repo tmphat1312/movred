@@ -1,14 +1,10 @@
 import { db } from "@/data/db";
 import { reviews } from "@/data/schema";
+import { getInternalUser } from "@/lib/data/get-internal-user";
 import { and, eq } from "drizzle-orm";
 
-export async function findYourReview({
-  movieId,
-  userId,
-}: {
-  movieId: number;
-  userId: number;
-}) {
+export async function findYourReview({ movieId }: { movieId: number }) {
+  const { id: userId } = await getInternalUser();
   const yourReviews = await db
     .select()
     .from(reviews)
