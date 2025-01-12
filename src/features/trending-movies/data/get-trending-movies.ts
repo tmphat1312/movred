@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/apiClient";
+import { apiClient } from "@/lib/api-client";
 import { STrendingMoviesHttpResponse } from "@/types/http/trending-movies";
 import { mask } from "superstruct";
 
