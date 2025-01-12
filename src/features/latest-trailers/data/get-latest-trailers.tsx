@@ -5,7 +5,10 @@ export async function getMovieTrailer({ id }: { id: number }) {
   return response.data.results[0];
 }
 
-export async function getLatestTrailers() {
+/**
+ * @deprecated This function is deprecated, use `getLatestTrailers` instead
+ */
+export async function getLatestTrailers_deprecated() {
   const response = await apiClient.get("/movie/upcoming");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const upComingResults = response.data.results as any[];
