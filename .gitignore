@@ -42,3 +42,6 @@ next-env.d.ts
 
 # CSpell VSCode
 */cspell.json
+
+# tmdb_json data
+/tmdb_json
