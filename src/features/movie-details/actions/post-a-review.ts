@@ -8,7 +8,7 @@ export type FormState = {
 };
 
 export async function postAReview(
-  preState: { message: string },
+  preState: FormState,
   formData: FormData,
 ): Promise<FormState> {
   const rawFormData = {
