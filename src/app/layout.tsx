@@ -1,5 +1,3 @@
-import { Footer } from "@/components/layouts/footer";
-import { StickyHeader } from "@/components/layouts/sticky-header";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
@@ -23,9 +21,7 @@ export default function RootLayout({
         <body
           className={`custom-scrollbar min-h-dvh ${source_sans_font.className}`}
         >
-          <StickyHeader />
           {children}
-          <Footer />
         </body>
       </ClerkProvider>
     </html>

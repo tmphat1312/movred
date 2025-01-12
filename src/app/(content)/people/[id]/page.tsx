@@ -1,4 +1,4 @@
-import { Banner } from "@/features/cast-details/banner";
+import { Banner } from "@/features/cast-details/components/banner";
 import {
   MainReading,
   MainReadingFallback,

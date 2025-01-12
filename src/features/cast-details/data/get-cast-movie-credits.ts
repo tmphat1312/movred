@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/apiClient";
+import { apiClient } from "@/lib/api-client";
 
 export async function getCastMovieCredits({ castId }: { castId: number }) {
   const response = await apiClient.get(`/person/${castId}/movie_credits`);
