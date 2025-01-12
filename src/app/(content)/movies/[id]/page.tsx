@@ -53,7 +53,7 @@ export default async function MovieDetails({
                 </div>
                 <div className="col-span-5">
                   <Suspense>
-                    <YourReview />
+                    <YourReview movieId={movieId} />
                   </Suspense>
                 </div>
               </div>
