@@ -1,5 +1,11 @@
 import { sql } from "drizzle-orm";
-import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  integer,
+  primaryKey,
+  real,
+  sqliteTable,
+  text,
+} from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
   id: integer().primaryKey({ autoIncrement: true }),
@@ -50,3 +56,20 @@ export const popular_movies = sqliteTable("popular_movies", {
     .notNull()
     .default(sql`(current_timestamp)`),
 });
+
+export const reviews = sqliteTable(
+  "reviews",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    review: text().notNull(),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
