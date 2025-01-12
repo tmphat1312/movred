@@ -14,7 +14,6 @@ export async function postAReview(
   const rawFormData = {
     review: formData.get("review") as string,
     movieId: parseInt(formData.get("movieId") as string, 10),
-    userId: parseInt(formData.get("userId") as string, 10),
   };
 
   if (rawFormData.review.length <= 0) {
@@ -29,7 +28,6 @@ export async function postAReview(
     await PostAReview({
       review: rawFormData.review,
       movieId: rawFormData.movieId,
-      userId: rawFormData.userId,
     });
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
