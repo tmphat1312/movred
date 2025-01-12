@@ -1,16 +1,9 @@
-"use client";
-
-import { use } from "react";
-
-import { MovieCard, MovieCardProps } from "@/components/movie-card";
+import { MovieCard } from "@/components/movie-card";
 import { Slider, SliderItem } from "@/components/slider";
+import { getPopularMovies } from "../data/get-popular-movies";
 
-export function PopularMovies({
-  popularMoviePromise,
-}: {
-  popularMoviePromise: Promise<MovieCardProps[]>;
-}) {
-  const movies = use(popularMoviePromise);
+export async function PopularMovies() {
+  const movies = await getPopularMovies();
 
   return (
     <Slider>

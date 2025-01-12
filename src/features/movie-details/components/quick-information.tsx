@@ -26,7 +26,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
   const bgImageURL = `https://media.themoviedb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path}`;
   const releaseYear = new Date(movie.release_date).getFullYear();
   const releases = `${new Date(movie.release_date).toLocaleDateString()} (${movie.origin_country.join(", ")})`;
-  const genres = movie.genres.map((g) => g.name).join(", ");
+  const genres = movie.genres.map((g: { name: string }) => g.name).join(", ");
 
   return (
     <div

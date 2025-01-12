@@ -1,14 +1,10 @@
 import { Slider, SliderItem } from "@/components/slider";
-import { use } from "react";
-import { TrailerCard, TrailerCardProps } from "./trailer-card";
 import { Shimmer } from "@/components/ui/shimmer";
+import { getLatestTrailers } from "../data/get-latest-trailers";
+import { TrailerCard } from "./trailer-card";
 
-export function LatestTrailers({
-  latestTrailersPromise,
-}: {
-  latestTrailersPromise: Promise<TrailerCardProps[]>;
-}) {
-  const latestTrailers = use(latestTrailersPromise);
+export async function LatestTrailers() {
+  const latestTrailers = await getLatestTrailers();
 
   return (
     <Slider>
