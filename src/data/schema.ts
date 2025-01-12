@@ -106,3 +106,19 @@ export const watchlist = sqliteTable(
     primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
   ],
 );
+
+export const favorites = sqliteTable(
+  "favorites",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
