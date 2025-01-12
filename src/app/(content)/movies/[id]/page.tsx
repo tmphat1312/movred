@@ -48,12 +48,12 @@ export default async function MovieDetails({
               <div className="grid grid-cols-12 gap-8">
                 <div className="col-span-7">
                   <Suspense>
-                    <ReviewList />
+                    <ReviewList movieId={movieId} />
                   </Suspense>
                 </div>
                 <div className="col-span-5">
                   <Suspense>
-                    <YourReview />
+                    <YourReview movieId={movieId} />
                   </Suspense>
                 </div>
               </div>

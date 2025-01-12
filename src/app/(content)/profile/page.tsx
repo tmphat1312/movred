@@ -1,7 +1,7 @@
-import { FavoriteList } from "@/features/user-profile/favorite-list";
-import { Greeting } from "@/features/user-profile/greeting";
-import { RatingList } from "@/features/user-profile/rating-list";
-import { WatchList } from "@/features/user-profile/watch-list";
+import { FavoriteList } from "@/features/user-profile/components/favorite-list";
+import { Greeting } from "@/features/user-profile/components/greeting";
+import { RatingList } from "@/features/user-profile/components/rating-list";
+import { WatchList } from "@/features/user-profile/components/watch-list";
 
 export default function Profile() {
   return (

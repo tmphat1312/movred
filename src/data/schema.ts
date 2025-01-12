@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { integer, real, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  integer,
+  primaryKey,
+  real,
+  sqliteTable,
+  text,
+} from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
   id: integer().primaryKey({ autoIncrement: true }),
   clerk_id: text().notNull(),
+  fullname: text(),
 });
 
 export const trending_movies = sqliteTable("trending_movies", {
@@ -50,3 +57,69 @@ export const popular_movies = sqliteTable("popular_movies", {
     .notNull()
     .default(sql`(current_timestamp)`),
 });
+
+export const reviews = sqliteTable(
+  "reviews",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    review: text().notNull(),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
+
+export const ratings = sqliteTable(
+  "ratings",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    rating: real().notNull(),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
+
+export const watchlist = sqliteTable(
+  "watchlist",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
+
+export const favorites = sqliteTable(
+  "favorites",
+  {
+    movie_id: integer().notNull(),
+    user_id: integer()
+      .notNull()
+      .references(() => users.id),
+    created_at: text("timestamp")
+      .notNull()
+      .default(sql`(current_timestamp)`),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
+  ],
+);
