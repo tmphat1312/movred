@@ -1,3 +1,7 @@
+import { desc } from "drizzle-orm";
+
+import { db } from "@/data/db";
+import { latest_trailers } from "@/data/schema";
 import { apiClient } from "@/lib/api-client";
 
 export async function getMovieTrailer({ id }: { id: number }) {
@@ -28,6 +32,22 @@ export async function getLatestTrailers_deprecated() {
         : null;
     })
     .filter(Boolean);
+
+  return latestTrailers;
+}
+
+export async function getLatestTrailers() {
+  const latestTrailers = await db
+    .select({
+      id: latest_trailers.tmdb_id,
+      key: latest_trailers.key,
+      name: latest_trailers.name,
+      title: latest_trailers.title,
+      backdrop_path: latest_trailers.backdrop_path,
+    })
+    .from(latest_trailers)
+    .limit(15)
+    .orderBy(desc(latest_trailers.created_at));
 
   return latestTrailers;
 }
