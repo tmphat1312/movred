@@ -3,12 +3,13 @@ import Link from "next/link";
 import { UnderlineLink } from "./ui/underline-link";
 import { dateFormatter } from "@/lib/utils/date-formatters";
 import { RatingCircle } from "./rating-circle";
+import { Nullable } from "@/types/utilities";
 
 export type MovieCardProps = {
   id: number;
   title: string;
-  release_date: string;
-  poster_path: string;
+  release_date: Nullable<string>;
+  poster_path: Nullable<string>;
   vote_average: number;
 };
 
@@ -46,7 +47,9 @@ export function MovieCard(movie: MovieCardProps) {
           </h4>
         </UnderlineLink>
         <p className="text-gray-500">
-          {dateFormatter.format(new Date(movie.release_date))}
+          {movie.release_date
+            ? dateFormatter.format(new Date(movie.release_date))
+            : "N/A"}
         </p>
       </section>
     </article>
