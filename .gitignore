@@ -45,3 +45,4 @@ next-env.d.ts
 
 # tmdb_json data
 /tmdb_json
+**/__data__
