@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const { chain } = require("stream-chain");
 const { parser } = require("stream-json");
