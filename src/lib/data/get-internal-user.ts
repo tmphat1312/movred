@@ -1,9 +1,11 @@
-import { db } from "@/data/db";
-import { users } from "@/data/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
+import { db } from "@/data/db";
+import { users } from "@/data/schema";
+
+// TODO: cache here
 export async function getInternalUser() {
   const { userId: clerkId } = await auth();
 
