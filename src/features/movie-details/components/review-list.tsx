@@ -20,7 +20,7 @@ export async function ReviewList({ movieId }: { movieId: number }) {
       <ul className="divide-y-2 border-r-2 pe-8">
         {withIdReviewList.map((review) => (
           <li key={review.id} className="py-2">
-            <p className="text-sm italic">{review.from} said:</p>
+            <p className="text-sm italic">{review.from || "Someone"} said:</p>
             <p>{review.review}</p>
           </li>
         ))}
