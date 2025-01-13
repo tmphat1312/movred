@@ -1,11 +1,10 @@
-import { randomInt } from "@/lib/utils/number-helpers";
 import { SearchMovieForm } from "./search-movie-form";
 export function SearchHeroSection() {
   return (
     <div
       className="light-blue-gradient text-layout-fg"
       style={{
-        backgroundImage: `url('/images/hero-section/${randomInt({ min: 1, max: 4 })}.webp')`,
+        backgroundImage: `url('/images/hero-section/1.webp')`,
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}
