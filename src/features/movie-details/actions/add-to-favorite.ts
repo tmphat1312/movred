@@ -1,32 +1,22 @@
 "use server";
 
-import { PostAReview } from "../data/post-a-review";
+import { addToFavoriteList } from "../data/add-to-favorite-list";
 
 export type FormState = {
   status: "idle" | "success" | "error";
   message: string;
 };
 
-export async function postAReview(
+export async function addToFavorite(
   preState: FormState,
   formData: FormData,
 ): Promise<FormState> {
   const rawFormData = {
-    review: formData.get("review") as string,
     movieId: parseInt(formData.get("movieId") as string, 10),
   };
 
-  if (rawFormData.review.length <= 0) {
-    return { message: "Please write a review", status: "error" };
-  }
-
-  if (rawFormData.review.length > 256) {
-    return { message: "Review is too long", status: "error" };
-  }
-
   try {
-    await PostAReview({
-      review: rawFormData.review,
+    await addToFavoriteList({
       movieId: rawFormData.movieId,
     });
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -37,5 +27,5 @@ export async function postAReview(
     };
   }
 
-  return { message: rawFormData.review, status: "success" };
+  return { message: "That's right, it's in your list", status: "success" };
 }

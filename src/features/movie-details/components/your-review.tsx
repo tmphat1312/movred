@@ -1,7 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 
 import { UnderlineLink } from "@/components/ui/underline-link";
-import { getInternalUser } from "@/lib/data/get-internal-user";
 import { findYourReview } from "../data/find-your-review";
 import { ReviewForm } from "./review-form";
 
@@ -20,8 +19,7 @@ export async function YourReview({ movieId }: { movieId: number }) {
     );
   }
 
-  const internalUser = await getInternalUser({ clerkId: userId });
-  const yourReview = await findYourReview({ movieId, userId: internalUser.id });
+  const yourReview = await findYourReview({ movieId });
 
   return (
     <Layout>
@@ -30,7 +28,7 @@ export async function YourReview({ movieId }: { movieId: number }) {
           {yourReview.review}
         </p>
       ) : (
-        <ReviewForm movieId={movieId} userId={internalUser.id} />
+        <ReviewForm movieId={movieId} />
       )}
     </Layout>
   );

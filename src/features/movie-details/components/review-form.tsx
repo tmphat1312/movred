@@ -8,13 +8,7 @@ const initialState: FormState = {
   message: "",
 };
 
-export function ReviewForm({
-  movieId,
-  userId,
-}: {
-  movieId: number;
-  userId: number;
-}) {
+export function ReviewForm({ movieId }: { movieId: number }) {
   const [state, formAction, pending] = useActionState(
     postAReview,
     initialState,
@@ -40,7 +34,6 @@ export function ReviewForm({
         disabled={pending}
       ></textarea>
       <input type="hidden" name="movieId" value={movieId} disabled={pending} />
-      <input type="hidden" name="userId" value={userId} disabled={pending} />
       {state.message && (
         <p className="mb-1 text-sm text-red-500" aria-live="polite">
           {state.message}

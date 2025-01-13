@@ -1,9 +1,8 @@
-import { Suspense } from "react";
+import { UnderlineLink } from "@/components/ui/underline-link";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { AddToFavorite } from "./add-to-favorite";
 import { AddToWatchList } from "./add-to-watch-list";
 import { PlayModalButton } from "./play-modal-button";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { UnderlineLink } from "@/components/ui/underline-link";
-import { AddToFavorite } from "./add-to-favorite";
 
 export function UserActions({ movieId }: { movieId: number }) {
   return (
@@ -19,9 +18,11 @@ export function UserActions({ movieId }: { movieId: number }) {
           </UnderlineLink>
         </div>
       </SignedOut>
-      <Suspense>
-        <PlayModalButton movieId={movieId} />
-      </Suspense>
+      <PlayModalButton movieId={movieId} />
     </div>
   );
+}
+
+export function UserActionsFallback() {
+  return <div className="h-[38px] w-[300px]" />;
 }

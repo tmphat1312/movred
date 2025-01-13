@@ -4,9 +4,10 @@ import { RatingCircle } from "@/components/rating-circle";
 import { Dot } from "@/components/ui/dot";
 import { getMovieDetails } from "@/features/movie-details/data/get-movie-details";
 import { secondsToHM } from "@/lib/utils/number-helpers";
-import { UserActions } from "./user-actions";
+import { UserActions, UserActionsFallback } from "./user-actions";
 import { getMovieCredits } from "../data/get-movie-credits";
 import { Shimmer } from "@/components/ui/shimmer";
+import { Suspense } from "react";
 
 export async function QuickInformation({ movieId }: { movieId: number }) {
   const [movie, credits] = await Promise.all([
@@ -72,7 +73,9 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
                 What&apos;s your Vibe?
               </div>
             </div>
-            <UserActions movieId={movie.id} />
+            <Suspense fallback={<UserActionsFallback />}>
+              <UserActions movieId={movie.id} />
+            </Suspense>
             <p className="mb-2 text-lg italic opacity-80">{movie.tagline}</p>
             <section className="mb-6">
               <h2 className="mb-2 text-xl font-semibold">Overview</h2>
