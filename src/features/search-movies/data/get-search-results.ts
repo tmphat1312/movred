@@ -13,6 +13,7 @@ export async function getSearchResults({
   page = 1,
   sort_by = "popularity.desc",
   include_adult = "false",
+  year,
 }: Options) {
   if (!query) {
     return {
@@ -29,6 +30,11 @@ export async function getSearchResults({
     sort_by,
     include_adult,
   });
+
+  if (year && year > 0) {
+    params.set("year", year.toString());
+  }
+
   console.log(params.toString());
   const response = await apiClient.get(`/search/movie?${params}`);
 

@@ -15,12 +15,14 @@ export default async function Search({
     page: string;
     sort_by: string;
     include_adult: string;
+    year: string;
   }>;
 }) {
   const query = (await searchParams).query;
   const page = Number((await searchParams).page || "1");
   const sort_by = (await searchParams).sort_by;
   const include_adult = (await searchParams).include_adult;
+  const year = Number((await searchParams).year || "-1");
 
   return (
     <main>
@@ -48,6 +50,7 @@ export default async function Search({
                 page={page}
                 sortBy={sort_by}
                 includeAdult={include_adult}
+                year={year}
               />
             </div>
           </div>

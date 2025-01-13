@@ -11,12 +11,19 @@ export function FilterForm() {
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
+    const form = event.target as HTMLFormElement;
     const currentParams = new URLSearchParams(searchParams);
     currentParams.delete("page");
 
-    const includeAdult = (event.target as HTMLFormElement)["include-adult"]
-      .checked;
-    currentParams.set("include_adult", includeAdult ? "true" : "false");
+    const includeAdult = form["include-adult"].checked;
+    if (includeAdult) {
+      currentParams.set("include_adult", "true");
+    }
+
+    const year = form["year"].value;
+    if (year) {
+      currentParams.set("year", year);
+    }
 
     router.push(`${pathname}?${currentParams}`);
   }
@@ -28,7 +35,17 @@ export function FilterForm() {
         <label htmlFor="include-adult">Include Adult Results</label>
       </div>
       <div className="flex items-center gap-2 py-4">
-        <label htmlFor="">Release Year</label>
+        <label htmlFor="year">Release Year</label>
+        <input
+          id="year"
+          type="number"
+          min="1900"
+          max="2099"
+          step="1"
+          name="year"
+          className="rounded border-2 border-layout-bg px-2 py-1"
+          placeholder="YYYY"
+        />
       </div>
       <div className="flex items-center gap-2 py-4">
         <label htmlFor="">User Score</label>

@@ -8,11 +8,13 @@ export async function SearchResults({
   page = 1,
   sortBy = "popularity.desc",
   includeAdult = "false",
+  year,
 }: {
   searchQuery: string;
   page?: number;
   sortBy?: string;
   includeAdult?: string;
+  year?: number;
 }) {
   if (includeAdult !== "false" && includeAdult !== "true") {
     includeAdult = "false";
@@ -23,6 +25,7 @@ export async function SearchResults({
     page,
     sort_by: sortBy,
     include_adult: includeAdult as "true" | "false",
+    year,
   });
 
   return (
