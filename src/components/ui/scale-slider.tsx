@@ -135,8 +135,8 @@ export const ScaleSlider: React.FC<ScaleSliderProps> = ({
           {/* Slider input */}
           <input
             type="range"
-            min="-3"
-            max="103"
+            min="0"
+            max="100"
             value={x.get()}
             onChange={handleChange}
             onPointerUp={handleDragEnd}
