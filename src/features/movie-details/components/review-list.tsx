@@ -1,3 +1,4 @@
+import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieReviews } from "../data/get-movie-reviews";
 
 export async function ReviewList({ movieId }: { movieId: number }) {
@@ -35,5 +36,13 @@ function Layout({ children }: { children: React.ReactNode }) {
       <h4 className="mb-2 font-medium">Reviews</h4>
       {children}
     </section>
+  );
+}
+
+export function ReviewListFallback() {
+  return (
+    <Layout>
+      <Shimmer className="h-[108px] w-full" />
+    </Layout>
   );
 }

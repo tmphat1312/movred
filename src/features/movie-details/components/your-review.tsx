@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { UnderlineLink } from "@/components/ui/underline-link";
 import { findYourReview } from "../data/find-your-review";
 import { ReviewForm } from "./review-form";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function YourReview({ movieId }: { movieId: number }) {
   const { userId } = await auth();
@@ -40,5 +41,13 @@ function Layout({ children }: { children: React.ReactNode }) {
       <h4 className="mb-2 font-medium">Your review</h4>
       {children}
     </section>
+  );
+}
+
+export function YourReviewFallback() {
+  return (
+    <Layout>
+      <Shimmer className="h-[108px] w-full" />
+    </Layout>
   );
 }
