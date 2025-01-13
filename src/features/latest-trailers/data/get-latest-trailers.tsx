@@ -46,8 +46,8 @@ export async function getLatestTrailers() {
       backdrop_path: latest_trailers.backdrop_path,
     })
     .from(latest_trailers)
-    .limit(15)
-    .orderBy(desc(latest_trailers.created_at));
+    .orderBy(desc(latest_trailers.created_at))
+    .limit(15);
 
   return latestTrailers;
 }
