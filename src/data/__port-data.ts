@@ -4,6 +4,7 @@ import { readFileSync } from "fs";
 
 import { db } from "./db";
 import {
+  genres,
   latest_trailers,
   popular_movies,
   trending_movies,
@@ -35,6 +36,12 @@ const __dirname = new URL(".", import.meta.url).pathname;
     jsonFilePath: `${__dirname}/__data__/popular_movies.json`,
     importFn: async (values) => {
       await db.insert(popular_movies).values(values);
+    },
+  });
+  await importArrayValuesFromJson<InferInsertModel<typeof genres>>({
+    jsonFilePath: `${__dirname}/__data__/movie_genres.json`,
+    importFn: async (values) => {
+      await db.insert(genres).values(values);
     },
   });
 })().catch(console.log);
