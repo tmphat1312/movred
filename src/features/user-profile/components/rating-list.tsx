@@ -4,6 +4,7 @@ import { getRatingList } from "../data/get-rating-list";
 import { removeFromRatingList } from "../actions/remove-from-rating-list";
 import { MoviePosterCard } from "./move-poster-card";
 import { RemovingForm } from "./removing-form";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function RatingList() {
   const list = await getRatingList();
@@ -28,6 +29,18 @@ export async function RatingList() {
           >
             <MoviePosterCard movie={item} />
           </RemovingForm>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function RatingListFallback() {
+  return (
+    <ul className="flex flex-wrap items-stretch gap-4">
+      {[1, 2, 3, 4, 5].map((index) => (
+        <li key={index}>
+          <Shimmer className="h-[225px] w-[160px]" />
         </li>
       ))}
     </ul>
