@@ -17,7 +17,7 @@ export async function WatchList() {
   }
 
   return (
-    <ul className="flex flex-wrap gap-4">
+    <ul className="flex flex-wrap items-stretch gap-4">
       {list.map((item) => (
         <li key={item.movie_id}>
           <RemovingForm

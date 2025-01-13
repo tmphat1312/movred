@@ -33,7 +33,7 @@ export function RemovingForm({
       {state.status == "error" && (
         <FloatingMessage variant="error">{state.message}</FloatingMessage>
       )}
-      <div className="relative w-fit">
+      <div className="relative h-full w-fit">
         <form action={formAction} className="absolute right-1 top-1 z-10">
           <input type="hidden" name="movieId" value={movieId} />
           <button
