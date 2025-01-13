@@ -37,7 +37,11 @@ export function SortForm() {
         <label htmlFor="sort-by" className="mb-1.5 block">
           Sort Results By
         </label>
-        <select name="sort-by" id="sort-by" className="rounded bg-gray-200 p-1">
+        <select
+          name="sort-by"
+          id="sort-by"
+          className="rounded border-2 border-layout-bg bg-gray-100 p-1"
+        >
           {sortOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
