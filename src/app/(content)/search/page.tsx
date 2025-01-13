@@ -14,19 +14,17 @@ export default async function Search({
     query: string;
     page: string;
     sort_by: string;
-    include_adult: string;
     year: string;
-    fromScore: string;
-    toScore: string;
+    from_score: string;
+    to_score: string;
   }>;
 }) {
   const query = (await searchParams).query;
   const page = Number((await searchParams).page || "1");
   const sort_by = (await searchParams).sort_by;
-  const include_adult = (await searchParams).include_adult;
   const year = Number((await searchParams).year || "-1");
-  const fromScore = Number((await searchParams).fromScore || "-1");
-  const toScore = Number((await searchParams).toScore || "-1");
+  const fromScore = Number((await searchParams).from_score || "0");
+  const toScore = Number((await searchParams).to_score || "10");
 
   return (
     <main>
@@ -53,7 +51,6 @@ export default async function Search({
                 searchQuery={query}
                 page={page}
                 sortBy={sort_by}
-                includeAdult={include_adult}
                 year={year}
                 fromScore={fromScore}
                 toScore={toScore}

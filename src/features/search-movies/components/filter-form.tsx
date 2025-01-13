@@ -18,10 +18,6 @@ export function FilterForm() {
   );
   const [toScore, setToScore] = useState(searchParams.get("to_score") ?? "");
 
-  function handleIsAdultChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setIsAdult(event.target.checked);
-  }
-
   function handleYearChange(event: React.ChangeEvent<HTMLInputElement>) {
     setYear(event.target.value);
   }
@@ -53,20 +49,16 @@ export function FilterForm() {
     setYear("");
     setFromScore("");
     setToScore("");
+
+    const currentParams = new URLSearchParams({
+      query: searchParams.get("query")!,
+    });
+
+    router.push(`${pathname}?${currentParams}`);
   }
 
   return (
     <form className="divide-y-2" onSubmit={handleSubmit}>
-      <div className="flex items-center gap-2 py-4">
-        <input
-          type="checkbox"
-          id="include-adult"
-          className="size-4"
-          checked={isAdult}
-          onChange={handleIsAdultChange}
-        />
-        <label htmlFor="include-adult">Include Adult Results</label>
-      </div>
       <div className="flex items-center gap-2 py-4">
         <label htmlFor="year">Release Year</label>
         <input

@@ -1,5 +1,6 @@
+import { Suspense } from "react";
+
 import { getSearchResults } from "@/features/search-movies/data/get-search-results";
-import { JSX, Suspense } from "react";
 import { SearchResultCard } from "./search-result-card";
 import { SearchResultsPagination } from "./search-results-pagination";
 
@@ -7,7 +8,6 @@ export async function SearchResults({
   searchQuery,
   page = 1,
   sortBy = "popularity.desc",
-  includeAdult = "false",
   year,
   fromScore = 0,
   toScore = 10,
@@ -15,53 +15,36 @@ export async function SearchResults({
   searchQuery: string;
   page?: number;
   sortBy?: string;
-  includeAdult?: string;
   year?: number;
   fromScore?: number;
   toScore?: number;
 }) {
-  if (includeAdult !== "false" && includeAdult !== "true") {
-    includeAdult = "false";
-  }
-
-  if (fromScore < 0) fromScore = 0;
-  if (toScore < 0) toScore = 10;
-
-  fromScore = Math.max(0, Math.min(10, fromScore));
-  toScore = Math.max(0, Math.min(10, toScore));
-
   const data = await getSearchResults({
     query: searchQuery,
     page,
+    // @ts-expect-error - This is a valid value
     sort_by: sortBy,
-    include_adult: includeAdult as "true" | "false",
     year,
+    from_score: fromScore,
+    to_score: toScore,
   });
 
   return (
     <>
       <ul className="grid grid-cols-2 items-stretch gap-6">
-        {data.results.map(
-          (
-            movie: JSX.IntrinsicAttributes & {
-              id: number;
-              poster_path: string | null;
-              title: string;
-              release_date: string | null;
-              overview: string;
-            },
-          ) => (
-            <li key={movie.id}>
-              <SearchResultCard {...movie} />
-            </li>
-          ),
-        )}
+        {data.results.map((movie) => (
+          <li key={movie.id}>
+            <SearchResultCard {...movie} />
+          </li>
+        ))}
       </ul>
       <Suspense>
-        <SearchResultsPagination
-          currentPage={page}
-          totalPages={data.total_pages}
-        />
+        {data.total_pages > 1 && (
+          <SearchResultsPagination
+            currentPage={page}
+            totalPages={data.total_pages}
+          />
+        )}
       </Suspense>
     </>
   );
