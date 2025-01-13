@@ -10,11 +10,17 @@ import { Suspense } from "react";
 export default async function Search({
   searchParams,
 }: {
-  searchParams: Promise<{ query: string; page: string; sort_by: string }>;
+  searchParams: Promise<{
+    query: string;
+    page: string;
+    sort_by: string;
+    include_adult: string;
+  }>;
 }) {
   const query = (await searchParams).query;
   const page = Number((await searchParams).page || "1");
   const sort_by = (await searchParams).sort_by;
+  const include_adult = (await searchParams).include_adult;
 
   return (
     <main>
@@ -37,7 +43,12 @@ export default async function Search({
             </div>
             <div className="col-span-9">
               <Banner searchQuery={query} />
-              <SearchResults searchQuery={query} page={page} sortBy={sort_by} />
+              <SearchResults
+                searchQuery={query}
+                page={page}
+                sortBy={sort_by}
+                includeAdult={include_adult}
+              />
             </div>
           </div>
         ) : (

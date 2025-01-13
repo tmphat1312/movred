@@ -4,12 +4,15 @@ type Options = {
   query: string;
   page?: number;
   sort_by?: string;
+  include_adult?: "true" | "false";
+  year?: number;
 };
 
 export async function getSearchResults({
   query,
   page = 1,
   sort_by = "popularity.desc",
+  include_adult = "false",
 }: Options) {
   if (!query) {
     return {
@@ -20,7 +23,13 @@ export async function getSearchResults({
     };
   }
 
-  const params = new URLSearchParams({ page: page.toString(), query, sort_by });
+  const params = new URLSearchParams({
+    page: page.toString(),
+    query,
+    sort_by,
+    include_adult,
+  });
+  console.log(params.toString());
   const response = await apiClient.get(`/search/movie?${params}`);
 
   return response.data;
