@@ -23,16 +23,6 @@ export const trending_movies = sqliteTable("trending_movies", {
   time_window: text({ enum: ["day", "week"] }).notNull(),
 });
 
-export const upcoming_movies = sqliteTable("upcoming_movies", {
-  id: integer().primaryKey({ autoIncrement: true }),
-  title: text().notNull(),
-  backdrop_path: text(),
-  tmdb_id: integer().notNull(),
-  created_at: text("timestamp")
-    .notNull()
-    .default(sql`(current_timestamp)`),
-});
-
 export const latest_trailers = sqliteTable("latest_trailers", {
   id: integer().primaryKey({ autoIncrement: true }),
   title: text().notNull(),
@@ -40,19 +30,6 @@ export const latest_trailers = sqliteTable("latest_trailers", {
   tmdb_id: integer().notNull(),
   key: text().notNull(),
   name: text().notNull(),
-  created_at: text("timestamp")
-    .notNull()
-    .default(sql`(current_timestamp)`),
-});
-
-export const popular_movies = sqliteTable("popular_movies", {
-  id: integer().primaryKey({ autoIncrement: true }),
-  title: text().notNull(),
-  release_date: text(),
-  poster_path: text(),
-  vote_average: real().notNull(),
-  tmdb_id: integer().notNull(),
-  popularity: real().notNull(),
   created_at: text("timestamp")
     .notNull()
     .default(sql`(current_timestamp)`),
