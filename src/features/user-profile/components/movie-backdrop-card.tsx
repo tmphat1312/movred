@@ -27,7 +27,7 @@ export function MovieBackdropCard({
         title={movie.title}
       >
         <UnderlineLink href={`/movies/${movie.id}`}>
-          {movie.title} asj askh aslkh
+          {movie.title}
         </UnderlineLink>
       </h3>
     </article>
