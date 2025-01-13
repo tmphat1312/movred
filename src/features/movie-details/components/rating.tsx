@@ -23,7 +23,7 @@ export async function Rating({ movieId }: { movieId: number }) {
   );
 }
 
-export function Layout({ children }: { children: React.ReactNode }) {
+function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <SignedIn>{children}</SignedIn>
