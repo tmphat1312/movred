@@ -3,6 +3,7 @@ import { getFavoriteList } from "../data/get-favorite-list";
 import { MovieBackdropCard } from "./movie-backdrop-card";
 import { RemovingForm } from "./removing-form";
 import { removeFromFavorites } from "../actions/remove-from-favorites";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function FavoriteList() {
   const list = await getFavoriteList();
@@ -32,6 +33,18 @@ export async function FavoriteList() {
               }}
             />
           </RemovingForm>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function FavoriteListFallback() {
+  return (
+    <ul className="flex flex-wrap gap-4">
+      {[1, 2, 3, 4, 5].map((item) => (
+        <li key={item}>
+          <Shimmer className="h-[164px] w-[200px] rounded-md" />
         </li>
       ))}
     </ul>
