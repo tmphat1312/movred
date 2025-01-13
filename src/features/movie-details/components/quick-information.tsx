@@ -1,27 +1,24 @@
 import Image from "next/image";
+import { Suspense } from "react";
 
 import { RatingCircle } from "@/components/rating-circle";
 import { Dot } from "@/components/ui/dot";
+import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieDetails } from "@/features/movie-details/data/get-movie-details";
 import { secondsToHM } from "@/lib/utils/number-helpers";
+import { getMovieCrew } from "../data/get-movie-credits";
 import { UserActions, UserActionsFallback } from "./user-actions";
-import { getMovieCredits } from "../data/get-movie-credits";
-import { Shimmer } from "@/components/ui/shimmer";
-import { Suspense } from "react";
 
 export async function QuickInformation({ movieId }: { movieId: number }) {
-  const [movie, credits] = await Promise.all([
+  const [movie, crew] = await Promise.all([
     getMovieDetails({ movie_id: movieId }),
-    getMovieCredits({ movie_id: movieId }),
+    getMovieCrew({ movie_id: movieId }),
   ]);
 
-  const { crew } = credits as {
-    crew: {
-      name: string;
-      job: string;
-    }[];
-  };
-  const groupedByName = Object.groupBy(crew, ({ name }) => name);
+  const groupedByName = Object.groupBy(
+    crew.filter(({ name }) => name),
+    ({ name }) => name!,
+  );
 
   const length = movie.runtime ? secondsToHM(movie.runtime * 60) : "N/A";
   const bgImageURL = `https://media.themoviedb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path}`;
