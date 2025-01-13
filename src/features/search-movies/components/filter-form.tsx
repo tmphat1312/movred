@@ -84,7 +84,7 @@ export function FilterForm() {
       </div>
       <div className="space-y-2 py-4">
         <label htmlFor="" className="block w-full">
-          User Score
+          Rating
         </label>
         <div className="flex gap-4">
           <div className="flex items-center gap-2">
