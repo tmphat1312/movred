@@ -61,7 +61,7 @@ export default async function MovieDetails({
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Rating</h3>
               <Suspense>
-                <Rating />
+                <Rating movieId={movieId} />
               </Suspense>
             </section>
             <section>
