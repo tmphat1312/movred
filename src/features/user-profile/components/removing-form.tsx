@@ -37,7 +37,7 @@ export function RemovingForm({
         <form action={formAction} className="absolute right-1 top-1 z-10">
           <input type="hidden" name="movieId" value={movieId} />
           <button
-            className="rounded-full bg-opacity-50 p-1.5 transition-transform hover:scale-105 hover:bg-white/50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-full bg-opacity-50 p-1.5 shadow-md transition-transform hover:scale-105 hover:bg-white/50 disabled:cursor-not-allowed disabled:opacity-50"
             aria-label={label}
             title={label}
             disabled={pending}
