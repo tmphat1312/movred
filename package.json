@@ -10,7 +10,8 @@
     "format": "prettier --write --list-different .",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "import-data": "tsx ./src/data/__port-data.ts",
+    "db:port": "tsx ./src/data/__port-data.ts",
+    "db:scrape": "tsx ./src/data/__scrape-data.ts",
     "db:push": "npx drizzle-kit push"
   },
   "dependencies": {
