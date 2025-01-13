@@ -17,7 +17,7 @@ export function Rating() {
 
   return (
     <Layout>
-      <h4 className="mb-2 font-semibold">What is your score for this movie.</h4>
+      <h4 className="mb-2 font-semibold">You will give it a</h4>
       <div className="flex items-center gap-5">
         <ScaleSlider />
         <button className="light-blue-gradient hover:green-gradient rounded-full px-4 py-2">
