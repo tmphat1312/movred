@@ -1,28 +1,13 @@
-export function ReviewList() {
-  const reviewList = [
-    {
-      id: 1,
-      review: "This movie is awesome!",
-      from: "John Doe",
-    },
-    {
-      id: 2,
-      review: "This movie is awesome!",
-      from: "John Doe",
-    },
-    {
-      id: 3,
-      review: "This movie is awesome!",
-      from: "John Doe",
-    },
-    {
-      id: 4,
-      review: "This movie is awesome!",
-      from: "John Doe",
-    },
-  ];
+import { getMovieReviews } from "../data/get-movie-reviews";
 
-  if (reviewList.length == 0) {
+export async function ReviewList({ movieId }: { movieId: number }) {
+  const reviewList = await getMovieReviews({ movieId });
+  const withIdReviewList = reviewList.map((review) => ({
+    ...review,
+    id: `${review.userId}-${review.movieId}`,
+  }));
+
+  if (withIdReviewList.length == 0) {
     return (
       <Layout>
         <p>No reviews yet</p>
@@ -33,9 +18,9 @@ export function ReviewList() {
   return (
     <Layout>
       <ul className="divide-y-2 border-r-2 pe-8">
-        {reviewList.map((review) => (
+        {withIdReviewList.map((review) => (
           <li key={review.id} className="py-2">
-            <p className="text-sm italic">{review.from} said:</p>
+            <p className="text-sm italic">{review.from || "Someone"} said:</p>
             <p>{review.review}</p>
           </li>
         ))}
