@@ -1,7 +1,8 @@
-import { db } from "@/data/db";
-import { popular_movies } from "@/data/schema";
-import { apiClient } from "@/lib/api-client";
 import { desc } from "drizzle-orm";
+
+import { db } from "@/data/db";
+import { movies } from "@/data/schema";
+import { apiClient } from "@/lib/api-client";
 
 /**
  * @deprecated This function is deprecated, use `getPopularMovies` instead
@@ -14,15 +15,15 @@ export async function getPopularMovies_depreacted() {
 export async function getPopularMovies() {
   const popularMovies = await db
     .select({
-      title: popular_movies.title,
-      release_date: popular_movies.release_date,
-      poster_path: popular_movies.poster_path,
-      vote_average: popular_movies.vote_average,
-      id: popular_movies.tmdb_id,
+      title: movies.title,
+      release_date: movies.release_date,
+      poster_path: movies.poster_path,
+      vote_average: movies.vote_average,
+      id: movies.id,
     })
-    .from(popular_movies)
-    .limit(15)
-    .orderBy(desc(popular_movies.popularity));
+    .from(movies)
+    .orderBy(desc(movies.popularity))
+    .limit(15);
 
   return popularMovies;
 }
