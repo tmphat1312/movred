@@ -1,19 +1,13 @@
-import { Slider, SliderItem } from "@/components/slider";
-import { getMovieCredits } from "../data/get-movie-credits";
 import Image from "next/image";
 import Link from "next/link";
-import { UnderlineLink } from "@/components/ui/underline-link";
+
+import { Slider, SliderItem } from "@/components/slider";
 import { Shimmer } from "@/components/ui/shimmer";
+import { UnderlineLink } from "@/components/ui/underline-link";
+import { getMovieCast } from "../data/get-movie-credits";
 
 export async function Casts({ movieId }: { movieId: number }) {
-  const { cast } = (await getMovieCredits({ movie_id: movieId })) as {
-    cast: {
-      id: number;
-      name: string;
-      profile_path: string;
-      character: string;
-    }[];
-  };
+  const cast = await getMovieCast({ movie_id: movieId });
 
   if (cast.length === 0) {
     return <p>No information about the casts yet.</p>;
@@ -27,7 +21,7 @@ export async function Casts({ movieId }: { movieId: number }) {
             <Link href={`/people/${person.id}`} className="group overflow-clip">
               <Image
                 src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${person.profile_path}`}
-                alt={person.name}
+                alt={person.name ?? "profile picture"}
                 width={138}
                 height={175}
                 className="h-[175px] w-full bg-gray-100 transition-transform group-hover:brightness-90"
@@ -37,14 +31,14 @@ export async function Casts({ movieId }: { movieId: number }) {
               <UnderlineLink href={`/people/${person.id}`}>
                 <h3
                   className="line-clamp-1 text-wrap font-bold"
-                  title={person.name}
+                  title={person.name ?? "Unknown"}
                 >
                   {person.name}
                 </h3>
               </UnderlineLink>
               <p
                 className="line-clamp-1 text-wrap text-sm"
-                title={person.character}
+                title={person.character ?? "Unknown"}
               >
                 {person.character}
               </p>

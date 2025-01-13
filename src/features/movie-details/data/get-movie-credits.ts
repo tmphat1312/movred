@@ -1,5 +1,5 @@
 import { db } from "@/data/db";
-import { crew, people } from "@/data/schema";
+import { cast, crew, people } from "@/data/schema";
 import { apiClient } from "@/lib/api-client";
 import { eq } from "drizzle-orm";
 
@@ -11,7 +11,7 @@ export async function v1({ movie_id }: { movie_id: number }) {
   return response.data;
 }
 
-export async function v2({ movie_id }: { movie_id: number }) {
+export async function v2_crew({ movie_id }: { movie_id: number }) {
   const crewList = await db
     .select({
       name: people.name,
@@ -23,5 +23,20 @@ export async function v2({ movie_id }: { movie_id: number }) {
   return crewList;
 }
 
+export async function v2_cast({ movie_id }: { movie_id: number }) {
+  const castList = await db
+    .select({
+      name: people.name,
+      character: cast.character,
+      profile_path: people.profile_path,
+      id: people.id,
+    })
+    .from(cast)
+    .leftJoin(people, eq(cast.person_id, people.id))
+    .where(eq(cast.movie_id, movie_id));
+  return castList;
+}
+
 export const getMovieCredits = v1;
-export const getMovieCrew = v2;
+export const getMovieCrew = v2_crew;
+export const getMovieCast = v2_cast;
