@@ -10,6 +10,7 @@ import {
   movies_genres as movie_genres_schema,
   movies as movies_schema,
   people as people_schema,
+  genres as genres_schema,
 } from "./schema";
 
 (async function main() {
@@ -17,12 +18,12 @@ import {
   consola.info("genres: ", genres.length);
 
   try {
-    await db.insert(movie_genres_schema).values(genres).onConflictDoNothing();
+    await db.insert(genres_schema).values(genres).onConflictDoNothing();
   } catch (error) {
     consola.error(error);
   }
 
-  for await (const chunk of scrapeMovies({ fromPage: 4, toPage: 10 })) {
+  for await (const chunk of scrapeMovies({ fromPage: 1, toPage: 5 })) {
     try {
       consola.info("movies: ", chunk.movies.length);
       consola.info("people: ", chunk.people.length);
@@ -84,11 +85,11 @@ async function* scrapeMovies({
     });
     const { data } = await apiClient.get(`/discover/movie?${params}`);
     const detailedMovies = await Promise.all(data.results.map(getMovieDetails));
+    movies = movies.concat(detailedMovies);
 
     await sleep(250);
     const creditedMovies = await Promise.all(data.results.map(getMovieCredits));
 
-    movies = movies.concat(detailedMovies);
     movieGenres = movieGenres.concat(
       detailedMovies.flatMap(({ genres, id: movie_id }) =>
         genres.map(({ id: genre_id }: { id: number }) => ({
