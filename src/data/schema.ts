@@ -141,6 +141,10 @@ export const movies = sqliteTable("movies", {
   vote_count: integer().notNull(),
   tmdb_id: integer().notNull(),
   popularity: real().notNull(),
+  original_language: text(),
+  tagline: text(),
+  status: text(),
+  revenue: integer(),
   created_at: text("timestamp")
     .notNull()
     .default(sql`(current_timestamp)`),
@@ -161,8 +165,37 @@ export const movies_genres = sqliteTable(
   ],
 );
 
-// TODO: Casts
+export const people = sqliteTable("people", {
+  id: integer().primaryKey({ autoIncrement: true }),
+  name: text().notNull(),
+  profile_path: text(),
+  tmdb_id: integer().notNull(),
+  also_known_as: text({ mode: "json" }).$type<string[]>(),
+  biography: text(),
+  birthday: text(),
+  place_of_birth: text(),
+  popularity: real().notNull(),
+  gender: integer(),
+  known_for_department: text(),
+  created_at: text("timestamp")
+    .notNull()
+    .default(sql`(current_timestamp)`),
+});
 
-// TODO: Cast credits
-
-// TODO: Movies
+export const people_credits = sqliteTable(
+  "people_credits",
+  {
+    person_id: integer()
+      .notNull()
+      .references(() => people.id),
+    movie_id: integer()
+      .notNull()
+      .references(() => movies.id),
+    department: text(),
+    job: text(),
+    character: text(),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.person_id, table.movie_id] }),
+  ],
+);
