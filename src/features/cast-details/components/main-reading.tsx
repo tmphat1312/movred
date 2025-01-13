@@ -1,29 +1,20 @@
 import Image from "next/image";
 
 import { Slider, SliderItem } from "@/components/slider";
+import { Shimmer } from "@/components/ui/shimmer";
 import { UnderlineLink } from "@/components/ui/underline-link";
 import { getCastDetails } from "../data/get-cast-details";
 import { getCastMovieCredits } from "../data/get-cast-movie-credits";
 import { Biography } from "./biography";
 import { OutlineDot } from "./outline-dot";
-import { Shimmer } from "@/components/ui/shimmer";
 
 export async function MainReading({ castId }: { castId: number }) {
   const [castDetails, movieCredits] = await Promise.all([
     getCastDetails({ castId }),
-    getCastMovieCredits({ castId }) as Promise<
-      {
-        poster_path: string;
-        popularity: number;
-        title: string;
-        id: number;
-        release_date: string;
-        character: string;
-      }[]
-    >,
+    getCastMovieCredits({ castId }),
   ]);
   const tenMostPopularMovies = movieCredits
-    .toSorted((a, b) => b.popularity - a.popularity)
+    .toSorted((a, b) => b.popularity! - a.popularity!)
     .slice(0, 10);
   const moviesGroupedByYear = Object.groupBy(movieCredits, (movie) =>
     movie.release_date ? new Date(movie.release_date).getFullYear() : "-",
@@ -59,7 +50,7 @@ export async function MainReading({ castId }: { castId: number }) {
                 <UnderlineLink href={`/movies/${movie.id}`}>
                   <Image
                     src={`https://media.themoviedb.org/t/p/w150_and_h225_bestv2/${movie.poster_path}`}
-                    alt={movie.title}
+                    alt={movie.title ?? "movie poster"}
                     width={130}
                     height={195}
                     className="mb-3 h-[195px] w-full rounded-lg bg-gray-100 transition-transform hover:shadow hover:brightness-90"
@@ -68,7 +59,7 @@ export async function MainReading({ castId }: { castId: number }) {
                 <UnderlineLink href={`/movies/${movie.id}`}>
                   <h3
                     className="line-clamp-2 text-balance text-center text-sm"
-                    title={movie.title}
+                    title={movie.title ?? "Unknown"}
                   >
                     {movie.title}
                   </h3>
