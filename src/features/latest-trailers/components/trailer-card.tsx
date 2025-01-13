@@ -60,7 +60,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
   }, []);
 
   return (
-    <article className="w-[300px] text-center">
+    <article className="motion-preset-focus w-[300px] text-center">
       <dialog
         ref={dialog}
         className="rounded-lg bg-black/90 text-white backdrop:bg-black/40"

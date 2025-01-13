@@ -41,7 +41,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
         backgroundSize: "cover",
       }}
     >
-      <div className="black-gradient">
+      <div className="black-gradient motion-preset-focus">
         <div className="container grid grid-cols-[auto_1fr] items-center gap-12 py-10 text-layout-fg">
           {/* Left */}
           <Image

@@ -18,7 +18,7 @@ export async function PersonalInformation({ castId }: { castId: number }) {
     : "-";
 
   return (
-    <div className="space-y-8">
+    <div className="motion-preset-fade space-y-8">
       <Image
         src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${castDetails.profile_path}`}
         alt={castDetails.name}
