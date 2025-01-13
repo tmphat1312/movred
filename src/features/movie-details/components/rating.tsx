@@ -1,29 +1,24 @@
-import { ScaleSlider } from "@/components/ui/scale-slider";
-import { UnderlineLink } from "@/components/ui/underline-link";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
-export function Rating() {
-  const yourRating = undefined;
+import { UnderlineLink } from "@/components/ui/underline-link";
+import { findYourRating } from "../data/find-your-rating";
+import { RatingForm } from "./rating-form";
+import { YourRating } from "./your-rating";
+
+export async function Rating({ movieId }: { movieId: number }) {
+  const yourRating = await findYourRating({ movieId });
 
   if (yourRating) {
     return (
       <Layout>
-        <p>
-          Your rating: <span className="text-lg font-bold">{yourRating}</span>
-        </p>
+        <YourRating rating={yourRating.rating} />
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <h4 className="mb-2 font-semibold">What is your score for this movie.</h4>
-      <div className="flex items-center gap-5">
-        <ScaleSlider />
-        <button className="light-blue-gradient hover:green-gradient rounded-full px-4 py-2">
-          Okay, Save My Rating
-        </button>
-      </div>
+      <RatingForm movieId={movieId} />
     </Layout>
   );
 }
