@@ -8,16 +8,10 @@ export function FilterForm() {
         <label htmlFor="include-adult">Include Adult Results</label>
       </div>
       <div className="flex items-center gap-2 py-4">
-        <label htmlFor="">Release Dates</label>
-      </div>
-      <div className="flex items-center gap-2 py-4">
-        <label htmlFor="">Genres</label>
+        <label htmlFor="">Release Year</label>
       </div>
       <div className="flex items-center gap-2 py-4">
         <label htmlFor="">User Score</label>
-      </div>
-      <div className="flex items-center gap-2 py-4">
-        <label htmlFor="">Run Time</label>
       </div>
       <div className="py-4">
         <ApplyButton />
