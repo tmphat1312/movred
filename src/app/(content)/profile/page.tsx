@@ -3,7 +3,10 @@ import {
   FavoriteListFallback,
 } from "@/features/user-profile/components/favorite-list";
 import { Greeting } from "@/features/user-profile/components/greeting";
-import { RatingList } from "@/features/user-profile/components/rating-list";
+import {
+  RatingList,
+  RatingListFallback,
+} from "@/features/user-profile/components/rating-list";
 import {
   WatchList,
   WatchListFallback,
@@ -31,7 +34,9 @@ export default function Profile() {
       </div>
       <section className="container py-4">
         <h2 className="mb-2 text-2xl font-semibold">Rating List</h2>
-        <RatingList />
+        <Suspense fallback={<RatingListFallback />}>
+          <RatingList />
+        </Suspense>
       </section>
     </main>
   );

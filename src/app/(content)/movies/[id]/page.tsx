@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { Banner } from "@/features/movie-details/components/banner";
 import {
   Casts,
@@ -11,14 +13,22 @@ import {
   QuickInformation,
   QuickInformationFallback,
 } from "@/features/movie-details/components/quick-information";
-import { Rating } from "@/features/movie-details/components/rating";
+import {
+  Ratings,
+  RatingsFallback,
+} from "@/features/movie-details/components/ratings";
 import {
   Recommendations,
   RecommendationsFallback,
 } from "@/features/movie-details/components/recommendations";
-import { ReviewList } from "@/features/movie-details/components/review-list";
-import { YourReview } from "@/features/movie-details/components/your-review";
-import { Suspense } from "react";
+import {
+  ReviewList,
+  ReviewListFallback,
+} from "@/features/movie-details/components/review-list";
+import {
+  YourReview,
+  YourReviewFallback,
+} from "@/features/movie-details/components/your-review";
 
 export default async function MovieDetails({
   params,
@@ -47,12 +57,12 @@ export default async function MovieDetails({
               <h3 className="mb-2.5 text-2xl font-bold">Reviews</h3>
               <div className="grid grid-cols-12 gap-8">
                 <div className="col-span-7">
-                  <Suspense>
+                  <Suspense fallback={<ReviewListFallback />}>
                     <ReviewList movieId={movieId} />
                   </Suspense>
                 </div>
                 <div className="col-span-5">
-                  <Suspense>
+                  <Suspense fallback={<YourReviewFallback />}>
                     <YourReview movieId={movieId} />
                   </Suspense>
                 </div>
@@ -60,8 +70,8 @@ export default async function MovieDetails({
             </section>
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Rating</h3>
-              <Suspense>
-                <Rating />
+              <Suspense fallback={<RatingsFallback />}>
+                <Ratings movieId={movieId} />
               </Suspense>
             </section>
             <section>

@@ -15,7 +15,7 @@ export type MovieCardProps = {
 
 export function MovieCard(movie: MovieCardProps) {
   return (
-    <article className="inline-block w-[150px] min-w-[150px] snap-center">
+    <article className="motion-preset-focus inline-block w-[150px] min-w-[150px] snap-center">
       <div className="div relative mb-4">
         <Link
           href={`movies/${movie.id}`}

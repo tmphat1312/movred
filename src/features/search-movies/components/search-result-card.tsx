@@ -8,7 +8,7 @@ export function SearchResultCard(movie: {
   poster_path: string | null;
   title: string;
   release_date: string | null;
-  overview: string;
+  overview: string | null;
 }) {
   return (
     <article className="grid grid-cols-[auto_1fr] gap-4 overflow-clip rounded-md shadow-md">

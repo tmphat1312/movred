@@ -4,6 +4,10 @@ import { getMovieKeywords } from "../data/get-movie-keywords";
 export async function Keywords({ movieId }: { movieId: number }) {
   const keywords = (await getMovieKeywords({ movieId })) as { name: string }[];
 
+  if (keywords.length === 0) {
+    return <p>No keywords found</p>;
+  }
+
   return (
     <ul className="flex flex-wrap gap-x-1 gap-y-2">
       {keywords.map((keyword) => (

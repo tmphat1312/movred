@@ -60,7 +60,7 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
   }, []);
 
   return (
-    <article className="w-[300px] text-center">
+    <article className="motion-preset-focus w-[300px] text-center">
       <dialog
         ref={dialog}
         className="rounded-lg bg-black/90 text-white backdrop:bg-black/40"
@@ -105,7 +105,10 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
         />
       </div>
 
-      <h3 className="mx-auto w-fit text-lg font-semibold">
+      <h3
+        className="mx-auto line-clamp-1 w-fit text-wrap text-lg font-semibold"
+        title={trailer.title}
+      >
         <UnderlineLink href={`/movies/${trailer.id}`}>
           {trailer.title}
         </UnderlineLink>

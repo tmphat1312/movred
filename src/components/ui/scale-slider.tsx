@@ -15,12 +15,11 @@ interface ScaleSliderProps {
   maxValue?: number;
   damping?: number;
   stiffness?: number;
+  inputName: string;
 }
 
 const AnimatedValue = ({
   value,
-  // progress,
-  // minValue,
   maxValue,
 }: {
   value: number;
@@ -64,6 +63,7 @@ export const ScaleSlider: React.FC<ScaleSliderProps> = ({
   maxValue = 10,
   damping = 20,
   stiffness = 300,
+  inputName,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const range = maxValue - minValue;
@@ -100,9 +100,9 @@ export const ScaleSlider: React.FC<ScaleSliderProps> = ({
 
   return (
     <div className="w-full max-w-md">
-      <div className="relative flex h-12 items-center gap-3 rounded-full bg-black pl-4 pr-6 dark:bg-white">
+      <div className="relative flex h-8 items-center gap-3 rounded-full bg-layout-bg pl-4 pr-6">
         {/* Value Indicator */}
-        <div className="relative flex h-6 w-12 items-center justify-center whitespace-nowrap text-sm font-semibold text-white dark:text-black">
+        <div className="relative flex h-4 w-12 items-center justify-center whitespace-nowrap text-sm font-semibold text-white">
           <AnimatedValue
             value={currentValue}
             progress={progress}
@@ -112,12 +112,12 @@ export const ScaleSlider: React.FC<ScaleSliderProps> = ({
         </div>
         <div className="relative h-1/3 w-full">
           {/* Gray background with notches */}
-          <div className="absolute inset-0 rounded-full bg-neutral-800 dark:bg-neutral-300">
+          <div className="absolute inset-0 rounded-full bg-layout-bg">
             <div className="absolute inset-0 flex items-center justify-between px-1">
               {[...Array(range + 1)].map((_, i) => (
                 <div
                   key={i}
-                  className="dark: h-2 w-2 rounded-full bg-neutral-400"
+                  className="size-2 rounded-full bg-neutral-400"
                 ></div>
               ))}
             </div>
@@ -125,22 +125,23 @@ export const ScaleSlider: React.FC<ScaleSliderProps> = ({
 
           {/* Slider */}
           <motion.div
-            className="absolute inset-y-0 left-0 z-10 rounded-l-full bg-white dark:bg-black"
+            className="absolute inset-y-0 left-0 z-10 rounded-l-full bg-white"
             style={{ width }}
           >
             {/* Thumb */}
-            <motion.div className="absolute right-0 top-1/2 h-6 w-6 -translate-y-1/2 translate-x-1/2 rounded-full border-2 border-neutral-800 bg-white shadow-md dark:border-neutral-300 dark:bg-black" />
+            <motion.div className="absolute right-0 top-1/2 size-6 -translate-y-1/2 translate-x-1/2 rounded-full border-2 border-neutral-800 bg-white shadow-md" />
           </motion.div>
 
           {/* Slider input */}
           <input
             type="range"
-            min="-3"
-            max="103"
+            min="0"
+            max="100"
             value={x.get()}
             onChange={handleChange}
             onPointerUp={handleDragEnd}
             className="absolute -inset-x-3 inset-y-0 z-20 w-[calc(100%+1.5rem)] cursor-pointer opacity-0"
+            name={inputName}
           />
         </div>
       </div>

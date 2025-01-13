@@ -12,7 +12,7 @@ export function MoviePosterCard({
   };
 }) {
   return (
-    <article className="group h-full w-[160px] overflow-clip rounded-md bg-gray-50 pb-1 text-gray-900 shadow-md transition-shadow hover:shadow-lg">
+    <article className="group motion-preset-slide-up h-full w-[160px] overflow-clip rounded-md bg-gray-50 pb-1 text-gray-900 shadow-md transition-shadow hover:shadow-lg">
       <UnderlineLink href={`/movies/${movie.movie_id}`}>
         <Image
           src={`https://media.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path})`}

@@ -1,32 +1,37 @@
 import Image from "next/image";
+import { Suspense } from "react";
 
 import { RatingCircle } from "@/components/rating-circle";
 import { Dot } from "@/components/ui/dot";
+import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieDetails } from "@/features/movie-details/data/get-movie-details";
 import { secondsToHM } from "@/lib/utils/number-helpers";
+import { getMovieCrew } from "../data/get-movie-credits";
 import { UserActions, UserActionsFallback } from "./user-actions";
-import { getMovieCredits } from "../data/get-movie-credits";
-import { Shimmer } from "@/components/ui/shimmer";
-import { Suspense } from "react";
 
 export async function QuickInformation({ movieId }: { movieId: number }) {
-  const [movie, credits] = await Promise.all([
+  const [movie, crew] = await Promise.all([
     getMovieDetails({ movie_id: movieId }),
-    getMovieCredits({ movie_id: movieId }),
+    getMovieCrew({ movie_id: movieId }),
   ]);
 
-  const { crew } = credits as {
-    crew: {
-      name: string;
-      job: string;
-    }[];
-  };
-  const groupedByName = Object.groupBy(crew, ({ name }) => name);
+  const groupedByName = Object.groupBy(
+    crew.filter(({ name }) => name),
+    ({ name }) => name!,
+  );
 
-  const length = secondsToHM(movie.runtime * 60);
+  const length = movie.runtime ? secondsToHM(movie.runtime * 60) : "N/A";
   const bgImageURL = `https://media.themoviedb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path}`;
-  const releaseYear = new Date(movie.release_date).getFullYear();
-  const releases = `${new Date(movie.release_date).toLocaleDateString()} (${movie.origin_country.join(", ")})`;
+  const releaseYear = movie.release_date
+    ? new Date(movie.release_date).getFullYear()
+    : "N/A";
+  const releases = movie.release_date
+    ? `${new Date(movie.release_date!).toLocaleDateString()}`
+    : "N/A";
+  const countries =
+    movie.origin_country && movie.origin_country.length
+      ? `(${movie.origin_country.join(", ")})`
+      : null;
   const genres = movie.genres.map((g: { name: string }) => g.name).join(", ");
 
   return (
@@ -36,7 +41,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
         backgroundSize: "cover",
       }}
     >
-      <div className="black-gradient">
+      <div className="black-gradient motion-preset-focus">
         <div className="container grid grid-cols-[auto_1fr] items-center gap-12 py-10 text-layout-fg">
           {/* Left */}
           <Image
@@ -57,7 +62,9 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
                 </span>
               </h1>
               <div className="flex items-center gap-2">
-                <span>{releases}</span>
+                <span>
+                  {releases} {countries}
+                </span>
                 <Dot />
                 <span>{genres}</span>
                 <Dot />

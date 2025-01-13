@@ -10,11 +10,21 @@ import { Suspense } from "react";
 export default async function Search({
   searchParams,
 }: {
-  searchParams: Promise<{ query: string; page: string; sort_by: string }>;
+  searchParams: Promise<{
+    query: string;
+    page: string;
+    sort_by: string;
+    year: string;
+    from_score: string;
+    to_score: string;
+  }>;
 }) {
   const query = (await searchParams).query;
   const page = Number((await searchParams).page || "1");
   const sort_by = (await searchParams).sort_by;
+  const year = Number((await searchParams).year || "-1");
+  const fromScore = Number((await searchParams).from_score || "0");
+  const toScore = Number((await searchParams).to_score || "10");
 
   return (
     <main>
@@ -37,7 +47,14 @@ export default async function Search({
             </div>
             <div className="col-span-9">
               <Banner searchQuery={query} />
-              <SearchResults searchQuery={query} page={page} sortBy={sort_by} />
+              <SearchResults
+                searchQuery={query}
+                page={page}
+                sortBy={sort_by}
+                year={year}
+                fromScore={fromScore}
+                toScore={toScore}
+              />
             </div>
           </div>
         ) : (
