@@ -6,6 +6,8 @@ type Options = {
   sort_by?: string;
   include_adult?: "true" | "false";
   year?: number;
+  from_score?: number;
+  to_score?: number;
 };
 
 export async function getSearchResults({
@@ -14,6 +16,8 @@ export async function getSearchResults({
   sort_by = "popularity.desc",
   include_adult = "false",
   year,
+  from_score = 0,
+  to_score = 10,
 }: Options) {
   if (!query) {
     return {
@@ -29,6 +33,8 @@ export async function getSearchResults({
     query,
     sort_by,
     include_adult,
+    "vote_average.gte": from_score.toString(),
+    "vote_average.lte": to_score.toString(),
   });
 
   if (year && year > 0) {

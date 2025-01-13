@@ -16,6 +16,8 @@ export default async function Search({
     sort_by: string;
     include_adult: string;
     year: string;
+    fromScore: string;
+    toScore: string;
   }>;
 }) {
   const query = (await searchParams).query;
@@ -23,6 +25,8 @@ export default async function Search({
   const sort_by = (await searchParams).sort_by;
   const include_adult = (await searchParams).include_adult;
   const year = Number((await searchParams).year || "-1");
+  const fromScore = Number((await searchParams).fromScore || "-1");
+  const toScore = Number((await searchParams).toScore || "-1");
 
   return (
     <main>
@@ -51,6 +55,8 @@ export default async function Search({
                 sortBy={sort_by}
                 includeAdult={include_adult}
                 year={year}
+                fromScore={fromScore}
+                toScore={toScore}
               />
             </div>
           </div>
