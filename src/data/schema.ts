@@ -142,6 +142,10 @@ export const movies = sqliteTable("movies", {
   tmdb_id: integer(),
   popularity: real().notNull(),
   original_language: text(),
+  origin_country: text({ mode: "json" })
+    .$type<string[]>()
+    .$default(() => []),
+  budget: integer(),
   tagline: text(),
   status: text(),
   revenue: integer(),
