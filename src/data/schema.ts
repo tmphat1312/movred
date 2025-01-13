@@ -139,7 +139,7 @@ export const movies = sqliteTable("movies", {
   runtime: integer(),
   vote_average: real().notNull(),
   vote_count: integer().notNull(),
-  tmdb_id: integer().notNull(),
+  tmdb_id: integer(),
   popularity: real().notNull(),
   original_language: text(),
   tagline: text(),
