@@ -26,8 +26,12 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
     ? new Date(movie.release_date).getFullYear()
     : "N/A";
   const releases = movie.release_date
-    ? `${new Date(movie.release_date!).toLocaleDateString()} (${movie.origin_country?.join(", ")})`
+    ? `${new Date(movie.release_date!).toLocaleDateString()}`
     : "N/A";
+  const countries =
+    movie.origin_country && movie.origin_country.length
+      ? `(${movie.origin_country.join(", ")})`
+      : null;
   const genres = movie.genres.map((g: { name: string }) => g.name).join(", ");
 
   return (
@@ -37,7 +41,7 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
         backgroundSize: "cover",
       }}
     >
-      <div className="black-gradient">
+      <div className="black-gradient motion-preset-focus">
         <div className="container grid grid-cols-[auto_1fr] items-center gap-12 py-10 text-layout-fg">
           {/* Left */}
           <Image
@@ -58,7 +62,9 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
                 </span>
               </h1>
               <div className="flex items-center gap-2">
-                <span>{releases}</span>
+                <span>
+                  {releases} {countries}
+                </span>
                 <Dot />
                 <span>{genres}</span>
                 <Dot />

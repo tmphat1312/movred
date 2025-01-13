@@ -6,7 +6,7 @@ import { PlayModalButton } from "./play-modal-button";
 
 export function UserActions({ movieId }: { movieId: number }) {
   return (
-    <div className="mb-2.5 flex items-center gap-4">
+    <div className="motion-preset-focus mb-2.5 flex items-center gap-4">
       <SignedIn>
         <AddToFavorite movieId={movieId} />
         <AddToWatchList movieId={movieId} />
@@ -24,5 +24,5 @@ export function UserActions({ movieId }: { movieId: number }) {
 }
 
 export function UserActionsFallback() {
-  return <div className="h-[38px] w-[300px]" />;
+  return <div className="h-[48px] w-[300px]" />;
 }

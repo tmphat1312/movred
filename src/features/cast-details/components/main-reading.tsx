@@ -35,7 +35,7 @@ export async function MainReading({ castId }: { castId: number }) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="motion-preset-focus space-y-6">
       <h1 className="text-4xl font-bold">{castDetails.name}</h1>
       <section>
         <h2 className="mb-2 text-xl font-semibold">Biography</h2>
