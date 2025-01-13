@@ -1,12 +1,17 @@
-import { FaRegBookmark } from "react-icons/fa";
+import { isMovieInYourFavoriteList } from "../data/is-movie-in-your-favorite-list";
+import { AddToWatchListForm } from "./add-to-watch-list-form";
+import { RemoveFromWatchListForm } from "./remove-from-watch-list-form";
 
-export function AddToWatchList({}: { movieId: number }) {
+export async function AddToWatchList({ movieId }: { movieId: number }) {
+  const isInWatchList = await isMovieInYourFavoriteList({ movieId });
+
   return (
-    <button
-      aria-label="add to watch list"
-      className="hover:green-gradient rounded-full bg-layout-bg p-2.5 text-layout-fg shadow"
-    >
-      <FaRegBookmark size={18} />
-    </button>
+    <>
+      {isInWatchList ? (
+        <RemoveFromWatchListForm movieId={movieId} />
+      ) : (
+        <AddToWatchListForm movieId={movieId} />
+      )}
+    </>
   );
 }
