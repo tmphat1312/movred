@@ -3,7 +3,7 @@
 import { FaHeart } from "react-icons/fa";
 import { useActionState } from "react";
 
-import { IconButton } from "./icon-button";
+import { IconButton } from "../../../components/ui/icon-button";
 import { FloatingMessage } from "@/components/ui/floating-message";
 import { FormState } from "../actions/add-to-favorite";
 import { removeFromFavorite } from "../actions/remove-from-favorite";

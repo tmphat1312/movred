@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 
 import { FloatingMessage } from "@/components/ui/floating-message";
 import { addToFavorite, FormState } from "../actions/add-to-favorite";
-import { IconButton } from "./icon-button";
+import { IconButton } from "../../../components/ui/icon-button";
 import { RemoveFromFavoriteForm } from "./remove-from-favorite-form";
 
 const initialState: FormState = {
