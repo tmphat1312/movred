@@ -169,7 +169,7 @@ export const people = sqliteTable("people", {
   id: integer().primaryKey({ autoIncrement: true }),
   name: text().notNull(),
   profile_path: text(),
-  tmdb_id: integer().notNull(),
+  tmdb_id: integer(),
   also_known_as: text({ mode: "json" }).$type<string[]>(),
   biography: text(),
   birthday: text(),
@@ -182,8 +182,8 @@ export const people = sqliteTable("people", {
     .default(sql`(current_timestamp)`),
 });
 
-export const people_credits = sqliteTable(
-  "people_credits",
+export const crew = sqliteTable(
+  "crew",
   {
     person_id: integer()
       .notNull()
@@ -193,6 +193,21 @@ export const people_credits = sqliteTable(
       .references(() => movies.id),
     department: text(),
     job: text(),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.person_id, table.movie_id] }),
+  ],
+);
+
+export const cast = sqliteTable(
+  "cast",
+  {
+    person_id: integer()
+      .notNull()
+      .references(() => people.id),
+    movie_id: integer()
+      .notNull()
+      .references(() => movies.id),
     character: text(),
   },
   (table) => [
