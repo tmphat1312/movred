@@ -105,7 +105,10 @@ export function TrailerCard({ trailer }: { trailer: TrailerCardProps }) {
         />
       </div>
 
-      <h3 className="mx-auto w-fit text-lg font-semibold">
+      <h3
+        className="mx-auto line-clamp-1 w-fit text-wrap text-lg font-semibold"
+        title={trailer.title}
+      >
         <UnderlineLink href={`/movies/${trailer.id}`}>
           {trailer.title}
         </UnderlineLink>
