@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import { Slider, SliderItem } from "@/components/slider";
 import { UnderlineLink } from "@/components/ui/underline-link";
-import Image from "next/image";
 import { getCastDetails } from "../data/get-cast-details";
 import { getCastMovieCredits } from "../data/get-cast-movie-credits";
 import { Biography } from "./biography";
@@ -9,10 +10,7 @@ import { Shimmer } from "@/components/ui/shimmer";
 
 export async function MainReading({ castId }: { castId: number }) {
   const [castDetails, movieCredits] = await Promise.all([
-    getCastDetails({ castId }) as Promise<{
-      name: string;
-      biography: string | null;
-    }>,
+    getCastDetails({ castId }),
     getCastMovieCredits({ castId }) as Promise<
       {
         poster_path: string;
@@ -50,7 +48,7 @@ export async function MainReading({ castId }: { castId: number }) {
       <h1 className="text-4xl font-bold">{castDetails.name}</h1>
       <section>
         <h2 className="mb-2 text-xl font-semibold">Biography</h2>
-        <Biography biography={castDetails.biography} />
+        <Biography biography={castDetails.biography ?? "No biography"} />
       </section>
       <section>
         <h2 className="mb-2 text-xl font-semibold">Known For</h2>
