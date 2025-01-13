@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils/cn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function FloatingMessage({
   className,
@@ -12,6 +12,16 @@ export function FloatingMessage({
   variant?: "success" | "error";
 }) {
   const [isOpen, setIsOpen] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   if (!isOpen) {
     return null;
