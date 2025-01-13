@@ -12,7 +12,7 @@ export function MovieBackdropCard({
   };
 }) {
   return (
-    <article className="group w-[200px] overflow-clip rounded-md bg-gray-50 pb-1 text-gray-900 shadow-md transition-shadow hover:shadow-lg">
+    <article className="group h-full w-[200px] overflow-clip rounded-md bg-gray-50 pb-1 text-gray-900 shadow-md transition-shadow hover:shadow-lg">
       <UnderlineLink href={`/movies/${movie.id}`}>
         <Image
           src={`https://media.themoviedb.org/t/p/w355_and_h200_multi_faces/${movie.backdrop_path})`}
@@ -23,11 +23,11 @@ export function MovieBackdropCard({
         />
       </UnderlineLink>
       <h3
-        className="mx-auto my-2 line-clamp-1 w-fit text-wrap px-1.5 font-medium"
+        className="mx-auto my-2 line-clamp-2 w-fit text-wrap px-1.5 text-sm font-medium"
         title={movie.title}
       >
         <UnderlineLink href={`/movies/${movie.id}`}>
-          {movie.title}
+          {movie.title} asj askh aslkh
         </UnderlineLink>
       </h3>
     </article>

@@ -44,7 +44,7 @@ export function FavoriteListFallback() {
     <ul className="flex flex-wrap gap-4">
       {[1, 2, 3, 4, 5].map((item) => (
         <li key={item}>
-          <Shimmer className="h-[164px] w-[200px] rounded-md" />
+          <Shimmer className="h-[180px] w-[200px] rounded-md" />
         </li>
       ))}
     </ul>
