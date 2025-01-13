@@ -4,7 +4,10 @@ import {
 } from "@/features/user-profile/components/favorite-list";
 import { Greeting } from "@/features/user-profile/components/greeting";
 import { RatingList } from "@/features/user-profile/components/rating-list";
-import { WatchList } from "@/features/user-profile/components/watch-list";
+import {
+  WatchList,
+  WatchListFallback,
+} from "@/features/user-profile/components/watch-list";
 import { Suspense } from "react";
 
 export default function Profile() {
@@ -14,7 +17,9 @@ export default function Profile() {
       <Greeting />
       <section className="container py-4">
         <h2 className="mb-2 text-2xl font-semibold">Watch List</h2>
-        <WatchList />
+        <Suspense fallback={<WatchListFallback />}>
+          <WatchList />
+        </Suspense>
       </section>
       <div className="bg-layout-bg text-layout-fg">
         <section className="container py-4">

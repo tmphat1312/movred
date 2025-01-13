@@ -4,6 +4,7 @@ import { removeFromWatchList } from "../actions/remove-from-watch-list";
 import { getWatchList } from "../data/get-watch-list";
 import { MoviePosterCard } from "./move-poster-card";
 import { RemovingForm } from "./removing-form";
+import { Shimmer } from "@/components/ui/shimmer";
 
 export async function WatchList() {
   const list = await getWatchList();
@@ -28,6 +29,18 @@ export async function WatchList() {
           >
             <MoviePosterCard movie={item} />
           </RemovingForm>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function WatchListFallback() {
+  return (
+    <ul className="flex flex-wrap items-stretch gap-4">
+      {[1, 2, 3, 4, 5].map((index) => (
+        <li key={index}>
+          <Shimmer className="h-[225px] w-[160px]" />
         </li>
       ))}
     </ul>
