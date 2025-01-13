@@ -23,10 +23,14 @@ export async function QuickInformation({ movieId }: { movieId: number }) {
   };
   const groupedByName = Object.groupBy(crew, ({ name }) => name);
 
-  const length = secondsToHM(movie.runtime * 60);
+  const length = movie.runtime ? secondsToHM(movie.runtime * 60) : "N/A";
   const bgImageURL = `https://media.themoviedb.org/t/p/w533_and_h300_bestv2/${movie.backdrop_path}`;
-  const releaseYear = new Date(movie.release_date).getFullYear();
-  const releases = `${new Date(movie.release_date).toLocaleDateString()} (${movie.origin_country.join(", ")})`;
+  const releaseYear = movie.release_date
+    ? new Date(movie.release_date).getFullYear()
+    : "N/A";
+  const releases = movie.release_date
+    ? `${new Date(movie.release_date!).toLocaleDateString()} (${movie.origin_country?.join(", ")})`
+    : "N/A";
   const genres = movie.genres.map((g: { name: string }) => g.name).join(", ");
 
   return (

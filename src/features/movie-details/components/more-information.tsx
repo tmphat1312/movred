@@ -1,20 +1,14 @@
+import { Suspense } from "react";
+
 import { Shimmer } from "@/components/ui/shimmer";
 import { getMovieDetails } from "../data/get-movie-details";
-import { SocialLinks, SocialLinksFallback } from "./social-links";
-import { Suspense } from "react";
 import { Keywords, KeywordsFallback } from "./keywords";
+import { SocialLinks, SocialLinksFallback } from "./social-links";
 
 export async function MoreInformation({ movieId }: { movieId: number }) {
-  const { status, budget, revenue, original_language } = (await getMovieDetails(
-    {
-      movie_id: movieId,
-    },
-  )) as {
-    status: string;
-    budget: number;
-    revenue: number;
-    original_language: string;
-  };
+  const { status, budget, revenue, original_language } = await getMovieDetails({
+    movie_id: movieId,
+  });
 
   return (
     <section className="space-y-6">
@@ -33,11 +27,11 @@ export async function MoreInformation({ movieId }: { movieId: number }) {
         </div>
         <div>
           <dt className="font-bold">Budget</dt>
-          <dd>${budget.toLocaleString()}</dd>
+          <dd>${budget?.toLocaleString() ?? 0}</dd>
         </div>
         <div>
           <dt className="font-bold">Revenue</dt>
-          <dd>${revenue.toLocaleString()}</dd>
+          <dd>${revenue?.toLocaleString() ?? 0}</dd>
         </div>
         <div>
           <dt className="mb-2 font-bold">Keywords</dt>
