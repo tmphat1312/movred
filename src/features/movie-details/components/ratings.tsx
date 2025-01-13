@@ -4,8 +4,9 @@ import { UnderlineLink } from "@/components/ui/underline-link";
 import { findYourRating } from "../data/find-your-rating";
 import { RatingForm } from "./rating-form";
 import { YourRating } from "./your-rating";
+import { Shimmer } from "@/components/ui/shimmer";
 
-export async function Rating({ movieId }: { movieId: number }) {
+export async function Ratings({ movieId }: { movieId: number }) {
   const yourRating = await findYourRating({ movieId });
 
   if (yourRating) {
@@ -35,5 +36,13 @@ function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </SignedOut>
     </>
+  );
+}
+
+export function RatingsFallback() {
+  return (
+    <Layout>
+      <Shimmer className="h-[68px] w-full" />
+    </Layout>
   );
 }

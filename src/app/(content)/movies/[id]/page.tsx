@@ -13,7 +13,10 @@ import {
   QuickInformation,
   QuickInformationFallback,
 } from "@/features/movie-details/components/quick-information";
-import { Rating } from "@/features/movie-details/components/rating";
+import {
+  Ratings,
+  RatingsFallback,
+} from "@/features/movie-details/components/ratings";
 import {
   Recommendations,
   RecommendationsFallback,
@@ -67,8 +70,8 @@ export default async function MovieDetails({
             </section>
             <section>
               <h3 className="mb-2.5 text-2xl font-bold">Rating</h3>
-              <Suspense>
-                <Rating movieId={movieId} />
+              <Suspense fallback={<RatingsFallback />}>
+                <Ratings movieId={movieId} />
               </Suspense>
             </section>
             <section>
