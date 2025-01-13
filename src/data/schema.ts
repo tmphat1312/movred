@@ -123,3 +123,15 @@ export const favorites = sqliteTable(
     primaryKey({ name: "pk", columns: [table.movie_id, table.user_id] }),
   ],
 );
+
+// TODO: Genres
+export const genres = sqliteTable("genres", {
+  id: integer().primaryKey({ autoIncrement: true }),
+  name: text().notNull(),
+});
+
+// TODO: Casts
+
+// TODO: Cast credits
+
+// TODO: Movies
