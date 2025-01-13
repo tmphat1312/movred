@@ -124,11 +124,42 @@ export const favorites = sqliteTable(
   ],
 );
 
-// TODO: Genres
 export const genres = sqliteTable("genres", {
   id: integer().primaryKey({ autoIncrement: true }),
   name: text().notNull(),
 });
+
+export const movies = sqliteTable("movies", {
+  id: integer().primaryKey({ autoIncrement: true }),
+  title: text().notNull(),
+  overview: text(),
+  backdrop_path: text(),
+  poster_path: text(),
+  release_date: text(),
+  runtime: integer(),
+  vote_average: real().notNull(),
+  vote_count: integer().notNull(),
+  tmdb_id: integer().notNull(),
+  popularity: real().notNull(),
+  created_at: text("timestamp")
+    .notNull()
+    .default(sql`(current_timestamp)`),
+});
+
+export const movies_genres = sqliteTable(
+  "movies_genres",
+  {
+    movie_id: integer()
+      .notNull()
+      .references(() => movies.id),
+    genre_id: integer()
+      .notNull()
+      .references(() => genres.id),
+  },
+  (table) => [
+    primaryKey({ name: "pk", columns: [table.movie_id, table.genre_id] }),
+  ],
+);
 
 // TODO: Casts
 
