@@ -77,7 +77,9 @@ First, create static data by running this command:
 npm run db:port
 ```
 
-Second, scrape some data from [`tmdb API`](https://developer.themoviedb.org/docs/getting-started) by running:
+> **Note**: Since other types of data are too large to include in the source, if possible please find some time to scrape data following the instruction below.
+
+Second (optional), scrape some data from [`tmdb API`](https://developer.themoviedb.org/docs/getting-started) by running (it will take a while):
 
 ```bash
 npm run db:scrape
