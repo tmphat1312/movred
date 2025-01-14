@@ -11,13 +11,13 @@ const __dirname = new URL(".", import.meta.url).pathname;
   await importArrayValuesFromJson<InferInsertModel<typeof trending_movies>>({
     jsonFilePath: `${__dirname}/__data__/trending_movies.json`,
     importFn: async (values) => {
-      await db.insert(trending_movies).values(values);
+      await db.insert(trending_movies).values(values).onConflictDoNothing();
     },
   });
   await importArrayValuesFromJson<InferInsertModel<typeof latest_trailers>>({
     jsonFilePath: `${__dirname}/__data__/latest_trailers.json`,
     importFn: async (values) => {
-      await db.insert(latest_trailers).values(values);
+      await db.insert(latest_trailers).values(values).onConflictDoNothing();
     },
   });
 })().catch(console.log);
