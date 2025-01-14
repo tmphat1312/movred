@@ -26,7 +26,7 @@ Second, install dependencies:
 npm install
 ```
 
-Third, fill in all environment variables displayed in `.env.example`:
+Third, create `.env.local` or `.env` file and fill in all variables displayed in `.env.example`:
 
 ```bash
 # clerk.com
