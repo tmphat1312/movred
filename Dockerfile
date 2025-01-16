@@ -24,4 +24,4 @@ COPY --from=base /app/package.json ./
 COPY .env /app/.env
 
 EXPOSE 3000
-CMD ["npm", "docker:start"]
+CMD ["npm", "run", "docker:start"]
