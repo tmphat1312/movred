@@ -6,6 +6,7 @@
     "dev": "NODE_OPTIONS='--network-family-autoselection-attempt-timeout=500' next dev",
     "build": "next build",
     "start": "NODE_OPTIONS='--network-family-autoselection-attempt-timeout=5000' next start",
+    "docker:start": "next start",
     "lint": "next lint",
     "format": "prettier --write --list-different .",
     "prepare": "husky",
